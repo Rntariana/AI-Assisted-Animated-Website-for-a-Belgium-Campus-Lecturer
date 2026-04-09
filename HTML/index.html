@@ -7,7 +7,350 @@
   <link rel="stylesheet" href="../Styles/styles.css"
 </head>
 <body>
-  
+  <!-- TOP BAR -->
+<div class="hud">
+  <header class="topbar">
+    <div class="topbar-left">
+      <div>
+        <div class="level-badge">07 <span class="level-label" style="font-size:8px;color:var(--text-dim);font-family:'Rajdhani',sans-serif;">LEVEL</span></div>
+      </div>
+      <div class="add-btn">+</div>
+      <div class="coins"><span>1,247</span> CREDITS EARNED</div>
+    </div>
+    <div class="topbar-right">
+      <span class="credits-btn">CREDITS</span>
+      <div>SERVER TIME: <span id="clock-server">--:--</span></div>
+      <div>LOCAL TIME: <span id="clock-local">--:--</span></div>
+    </div>
+  </header>
+ 
+  <!-- LEFT PANEL -->
+  <aside class="left-panel">
+    <!-- Character portrait -->
+    <div class="char-frame" id="charFrame" title="Ikraam Sadek">
+      <div class="scan-line"></div>
+      <div class="char-inner">
+        <!-- Male lecturer character — SVG illustration -->
+        <svg class="char-svg" viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="bgGrad" cx="50%" cy="60%" r="55%">
+              <stop offset="0%" stop-color="#1a0a2e"/>
+              <stop offset="100%" stop-color="#060410"/>
+            </radialGradient>
+            <radialGradient id="skinGrad" cx="50%" cy="40%" r="55%">
+              <stop offset="0%" stop-color="#c8845a"/>
+              <stop offset="100%" stop-color="#8b5230"/>
+            </radialGradient>
+            <radialGradient id="glowRad" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="rgba(255,107,26,0.25)"/>
+              <stop offset="100%" stop-color="rgba(255,107,26,0)"/>
+            </radialGradient>
+          </defs>
+          <!-- Background -->
+          <rect width="160" height="160" fill="url(#bgGrad)"/>
+          <!-- Ambient glow -->
+          <ellipse cx="80" cy="90" rx="60" ry="50" fill="url(#glowRad)"/>
+          <!-- Circuit lines bg -->
+          <g stroke="rgba(255,107,26,0.12)" stroke-width="0.5" fill="none">
+            <line x1="0" y1="120" x2="40" y2="120"/><line x1="40" y1="120" x2="40" y2="100"/>
+            <line x1="120" y1="130" x2="160" y2="130"/>
+            <line x1="10" y1="60" x2="30" y2="60"/><line x1="30" y1="60" x2="30" y2="40"/>
+            <line x1="140" y1="50" x2="155" y2="50"/>
+            <circle cx="40" cy="100" r="2" fill="rgba(255,107,26,0.3)" stroke="none"/>
+            <circle cx="30" cy="40" r="2" fill="rgba(255,107,26,0.3)" stroke="none"/>
+          </g>
+          <!-- Shoulders / body (academic jacket - dark charcoal) -->
+          <path d="M18 160 Q18 130 30 125 L50 118 Q65 115 80 115 Q95 115 110 118 L130 125 Q142 130 142 160Z" fill="#1c1c2a"/>
+          <!-- Collar / shirt -->
+          <path d="M64 118 L72 110 L80 114 L88 110 L96 118 L88 122 L80 118 L72 122Z" fill="#e8e0d8"/>
+          <!-- Tie (orange accent) -->
+          <path d="M78 112 L80 116 L82 112 L81 124 L80 128 L79 124Z" fill="#ff6b1a"/>
+          <!-- Jacket lapels -->
+          <path d="M64 118 L72 110 L65 125 L50 130Z" fill="#242438"/>
+          <path d="M96 118 L88 110 L95 125 L110 130Z" fill="#242438"/>
+          <!-- Neck -->
+          <rect x="72" y="100" width="16" height="14" rx="4" fill="url(#skinGrad)"/>
+          <!-- Head -->
+          <ellipse cx="80" cy="82" rx="26" ry="28" fill="url(#skinGrad)"/>
+          <!-- Ears -->
+          <ellipse cx="54" cy="82" rx="5" ry="7" fill="#c07848"/>
+          <ellipse cx="106" cy="82" rx="5" ry="7" fill="#c07848"/>
+          <!-- Short dark hair -->
+          <path d="M55 72 Q58 54 80 52 Q102 54 105 72 Q102 60 80 58 Q58 60 55 72Z" fill="#1a1008"/>
+          <ellipse cx="80" cy="56" rx="22" ry="8" fill="#1a1008"/>
+          <!-- Beard/stubble subtle -->
+          <path d="M66 96 Q80 102 94 96 Q90 106 80 108 Q70 106 66 96Z" fill="#8b6040" opacity="0.5"/>
+          <!-- Eyes -->
+          <ellipse cx="70" cy="80" rx="5.5" ry="4" fill="#fff" opacity="0.95"/>
+          <ellipse cx="90" cy="80" rx="5.5" ry="4" fill="#fff" opacity="0.95"/>
+          <ellipse cx="71" cy="80" rx="3.5" ry="3.5" fill="#2a1500"/>
+          <ellipse cx="91" cy="80" rx="3.5" ry="3.5" fill="#2a1500"/>
+          <!-- Pupils -->
+          <circle cx="71" cy="80" r="2" fill="#0a0500"/>
+          <circle cx="91" cy="80" r="2" fill="#0a0500"/>
+          <!-- Eye highlights -->
+          <circle cx="72.5" cy="78.5" r="1" fill="rgba(255,255,255,0.9)"/>
+          <circle cx="92.5" cy="78.5" r="1" fill="rgba(255,255,255,0.9)"/>
+          <!-- Eyebrows -->
+          <path d="M63 73 Q70 70 77 73" stroke="#1a1008" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <path d="M83 73 Q90 70 97 73" stroke="#1a1008" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <!-- Nose -->
+          <path d="M78 84 Q80 90 82 84" stroke="#a06040" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+          <!-- Subtle smile -->
+          <path d="M73 94 Q80 99 87 94" stroke="#8b5030" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+          <!-- Glasses -->
+          <rect x="62" y="75" width="14" height="10" rx="3" fill="none" stroke="rgba(255,107,26,0.7)" stroke-width="1.2"/>
+          <rect x="84" y="75" width="14" height="10" rx="3" fill="none" stroke="rgba(255,107,26,0.7)" stroke-width="1.2"/>
+          <line x1="76" y1="79" x2="84" y2="79" stroke="rgba(255,107,26,0.7)" stroke-width="1"/>
+          <line x1="54" y1="78" x2="62" y2="78" stroke="rgba(255,107,26,0.5)" stroke-width="0.8"/>
+          <line x1="98" y1="78" x2="106" y2="78" stroke="rgba(255,107,26,0.5)" stroke-width="0.8"/>
+          <!-- HUD scan overlay effect -->
+          <rect x="0" y="0" width="160" height="160" fill="none" stroke="rgba(255,107,26,0.4)" stroke-width="1"/>
+          <!-- Orange glow dots -->
+          <circle cx="18" cy="18" r="2" fill="rgba(255,107,26,0.6)"/>
+          <circle cx="142" cy="18" r="2" fill="rgba(255,107,26,0.6)"/>
+          <circle cx="18" cy="142" r="2" fill="rgba(255,107,26,0.6)"/>
+          <circle cx="142" cy="142" r="2" fill="rgba(255,107,26,0.6)"/>
+        </svg>
+      </div>
+      <div class="corner-br"></div>
+    </div>
+ 
+    <div class="sep"></div>
+ 
+    <div class="info-block">
+      <span class="info-label">Name</span>
+      <span class="info-value">IKRAAM SADEK</span>
+    </div>
+    <div class="info-block">
+      <span class="info-label">Occupation</span>
+      <span class="info-value">JUNIOR LECTURER</span>
+    </div>
+    <div class="info-block">
+      <span class="info-label">Institution</span>
+      <span class="info-value" style="font-size:10px;">BELGIUM CAMPUS<br>SOUTH AFRICA</span>
+    </div>
+ 
+    <div class="sep"></div>
+ 
+    <div class="info-block">
+      <span class="info-label">Availability</span>
+    </div>
+    <div class="tag-btn">OPEN FOR HIRE <span class="icon">✕</span></div>
+ 
+    <div class="info-block">
+      <span class="info-label">Social</span>
+    </div>
+    <a class="tag-btn" href="https://za.linkedin.com/in/ik-sadek" target="_blank" rel="noopener">
+      OPEN CONNECTION <span class="icon" style="font-size:10px;">⟶</span>
+    </a>
+ 
+    <div class="sep"></div>
+ 
+    <div class="motto">
+      <span class="info-label">Motto</span>
+      <p style="margin-top:4px;">"Enjoys to help people with any issues they come across."</p>
+    </div>
+  </aside>
+ 
+  <!-- MAIN PANEL -->
+  <main class="main-panel">
+    <!-- Content overlays for each tab -->
+    <div class="content-overlay" id="overlay-about">
+      <div class="overlay-header">
+        <span class="overlay-title">// ABOUT</span>
+        <span class="overlay-close" onclick="closeOverlay()">✕</span>
+      </div>
+      <div class="overlay-grid">
+        <div class="o-card">
+          <div class="o-card-title">WHO AM I</div>
+          <div class="o-card-text">Junior Lecturer at Belgium Campus ITversity, South Africa. Passionate about empowering students through technology and practical learning experiences.</div>
+          <span class="o-badge">EDUCATOR</span>
+        </div>
+        <div class="o-card">
+          <div class="o-card-title">EXPERTISE</div>
+          <div class="o-card-text">Programming fundamentals, software development principles, and applied computing. Committed to making complex concepts accessible to every student.</div>
+          <span class="o-badge">DEVELOPER</span>
+        </div>
+        <div class="o-card">
+          <div class="o-card-title">INSTITUTION</div>
+          <div class="o-card-text">Belgium Campus ITversity — a leading private higher education institution focused on IT and computing sciences across South Africa.</div>
+          <span class="o-badge">BELGIUM CAMPUS ZA</span>
+        </div>
+        <div class="o-card">
+          <div class="o-card-title">PHILOSOPHY</div>
+          <div class="o-card-text">Believes that no question is too small and no problem too big. Always open to guide students beyond the classroom and into the real world.</div>
+          <span class="o-badge">MENTOR</span>
+        </div>
+      </div>
+    </div>
+ 
+    <div class="content-overlay" id="overlay-notes">
+      <div class="overlay-header">
+        <span class="overlay-title">// NOTES</span>
+        <span class="overlay-close" onclick="closeOverlay()">✕</span>
+      </div>
+      <div class="overlay-grid">
+        <div class="o-card">
+          <div class="o-card-title">LECTURE NOTES</div>
+          <div class="o-card-text">Course materials, slides, and supplementary notes will be uploaded here throughout the semester. Check back regularly for updates.</div>
+          <span class="o-badge">IN PROGRESS</span>
+        </div>
+        <div class="o-card">
+          <div class="o-card-title">ANNOUNCEMENTS</div>
+          <div class="o-card-text">Important notices regarding schedule changes, assessment dates, and institutional events will be posted in this section.</div>
+          <span class="o-badge">ACTIVE</span>
+        </div>
+      </div>
+    </div>
+ 
+    <div class="content-overlay" id="overlay-achievements">
+      <div class="overlay-header">
+        <span class="overlay-title">// ACHIEVEMENTS</span>
+        <span class="overlay-close" onclick="closeOverlay()">✕</span>
+      </div>
+      <div class="overlay-grid">
+        <div class="o-card">
+          <div class="o-card-title">EDUCATOR RANK</div>
+          <div class="o-card-text">Attained position of Junior Lecturer at Belgium Campus ITversity. Delivering quality education in programming and computer science disciplines.</div>
+          <span class="o-badge">UNLOCKED</span>
+        </div>
+        <div class="o-card">
+          <div class="o-card-title">CURRICULUM DESIGN</div>
+          <div class="o-card-text">Contributing to module development and curriculum planning for programming fundamentals and related subjects.</div>
+          <span class="o-badge">IN PROGRESS</span>
+        </div>
+        <div class="o-card">
+          <div class="o-card-title">STUDENT MENTOR</div>
+          <div class="o-card-text">Actively mentoring students through technical challenges, helping them bridge the gap between theory and practical application.</div>
+          <span class="o-badge">ACTIVE</span>
+        </div>
+      </div>
+    </div>
+ 
+    <div class="content-overlay" id="overlay-projects">
+      <div class="overlay-header">
+        <span class="overlay-title">// PROJECTS</span>
+        <span class="overlay-close" onclick="closeOverlay()">✕</span>
+      </div>
+      <div class="overlay-grid">
+        <div class="o-card">
+          <div class="o-card-title">PORTFOLIO SITE</div>
+          <div class="o-card-text">An interactive cyberpunk-themed portfolio website showcasing this lecturer's profile, courses, and achievements. Built with vanilla HTML/CSS/JS.</div>
+          <span class="o-badge">THIS SITE</span>
+        </div>
+        <div class="o-card">
+          <div class="o-card-title">MORE COMING SOON</div>
+          <div class="o-card-text">Additional projects and showcases will be added here. Stay tuned for updates.</div>
+          <span class="o-badge">LOCKED</span>
+        </div>
+      </div>
+    </div>
+ 
+    <div class="content-overlay" id="overlay-activities">
+      <div class="overlay-header">
+        <span class="overlay-title">// ACTIVITIES</span>
+        <span class="overlay-close" onclick="closeOverlay()">✕</span>
+      </div>
+      <div class="overlay-grid">
+        <div class="o-card">
+          <div class="o-card-title">OFFICE HOURS</div>
+          <div class="o-card-text">Regular office hours available for student consultations. Details to be confirmed with the department schedule each semester.</div>
+          <span class="o-badge">RECURRING</span>
+        </div>
+        <div class="o-card">
+          <div class="o-card-title">WORKSHOPS</div>
+          <div class="o-card-text">Occasional hands-on coding workshops and extra sessions for students needing additional support in programming modules.</div>
+          <span class="o-badge">SEASONAL</span>
+        </div>
+        <div class="o-card">
+          <div class="o-card-title">ASSESSMENTS</div>
+          <div class="o-card-text">Assessment schedules, deadlines, and submission guidelines for all active modules will be communicated through the official LMS.</div>
+          <span class="o-badge">ACTIVE</span>
+        </div>
+      </div>
+    </div>
+ 
+    <!-- Default hero view -->
+    <div class="main-caption">
+      <p>SHAPING THE NEXT GENERATION OF DEVELOPERS<br>THROUGH DEDICATION, PATIENCE AND PRACTICAL KNOWLEDGE</p>
+      <small>BELGIUM CAMPUS ITVERSITY — SOUTH AFRICA</small>
+    </div>
+    <div class="hero-img-wrap">
+      <img
+        src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&q=80&auto=format&fit=crop"
+        alt="Technology background"
+        onerror="this.src=''; this.parentElement.style.background='linear-gradient(135deg,#0a0020 0%,#1a0535 40%,#0d0020 100%)';"
+      />
+    </div>
+  </main>
+ 
+  <!-- RIGHT PANEL -->
+  <aside class="right-panel">
+    <div class="quest-header">
+      <span>ACTIVE COURSES</span>
+      <span class="quest-close">✕</span>
+    </div>
+    <div class="quest-body">
+      <div class="quest-sublabel">MODULE DRILL-UP</div>
+      <div class="quest-title">CURRENT<br>TEACHING LOAD</div>
+      <div class="quest-goal">ENGAGE WITH STUDENTS, DELIVER QUALITY LECTURES, FACILITATE LEARNING AND ASSESS PROGRESS.</div>
+ 
+      <div class="quest-sublabel" style="margin-bottom:6px;">ACTIVE MODULES</div>
+      <div class="course-tabs">
+        <div class="course-tab active">
+          <div class="ct-code">PRP161</div>
+          <div class="ct-name">Programming Principles</div>
+          <div class="ct-desc">Intro to programming logic, variables, control structures & algorithms.</div>
+        </div>
+        <div class="course-tab">
+          <div class="ct-code">PRG261</div>
+          <div class="ct-name">Programming</div>
+          <div class="ct-desc">Applied programming concepts, OOP fundamentals & project-based development.</div>
+        </div>
+      </div>
+    </div>
+ 
+    <div class="right-settings">
+      <div class="setting-row">
+        <span>Sound Effects</span>
+        <div class="toggle on" onclick="toggleSetting(this)">✓</div>
+      </div>
+      <div class="setting-row">
+        <span>Music</span>
+        <div class="toggle off" onclick="toggleSetting(this)">✕</div>
+      </div>
+      <div class="setting-row">
+        <span>Visual Settings</span>
+        <div class="toggle on settings-icon" onclick="toggleSetting(this)">⚙</div>
+      </div>
+    </div>
+  </aside>
+ 
+  <!-- TABS BAR -->
+  <nav class="tabs-panel">
+    <div class="tab-item active" onclick="openTab('about', this)">
+      <div class="tab-label">ABOUT <span class="tab-x">✕</span></div>
+      <div class="tab-desc">Lecturer profile, background and philosophy.</div>
+    </div>
+    <div class="tab-item" onclick="openTab('notes', this)">
+      <div class="tab-label">NOTES</div>
+      <div class="tab-desc">Lecture materials, slides and announcements.</div>
+    </div>
+    <div class="tab-item" onclick="openTab('achievements', this)">
+      <div class="tab-label">ACHIEVEMENTS</div>
+      <div class="tab-desc">Milestones, certifications and academic goals.</div>
+    </div>
+    <div class="tab-item" onclick="openTab('projects', this)">
+      <div class="tab-label">PROJECTS</div>
+      <div class="tab-desc">Showcased builds, code and collaborations.</div>
+    </div>
+    <div class="tab-item" onclick="openTab('activities', this)">
+      <div class="tab-label">ACTIVITIES</div>
+      <div class="tab-desc">Office hours, workshops and assessments.</div>
+    </div>
+  </nav>
+</div>
 
   <script src="../Javascript/script.js"></script>
 </body>
