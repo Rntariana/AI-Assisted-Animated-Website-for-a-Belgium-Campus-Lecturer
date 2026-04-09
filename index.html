@@ -1,357 +1,709 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Animated Website for Ikraam Sadek</title>
-  <link rel="stylesheet" href="../Styles/styles.css"
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mr. Ikraam Sadek — Junior Lecturer | Belgium Campus</title>
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Space+Mono:wght@400;700&family=Exo+2:wght@300;400;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- External Stylesheet -->
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <!-- TOP BAR -->
-<div class="hud">
-  <header class="topbar">
-    <div class="topbar-left">
-      <div>
-        <div class="level-badge">07 <span class="level-label" style="font-size:8px;color:var(--text-dim);font-family:'Rajdhani',sans-serif;">LEVEL</span></div>
-      </div>
-      <div class="add-btn">+</div>
-      <div class="coins"><span>1,247</span> CREDITS EARNED</div>
-    </div>
-    <div class="topbar-right">
-      <span class="credits-btn">CREDITS</span>
-      <div>SERVER TIME: <span id="clock-server">--:--</span></div>
-      <div>LOCAL TIME: <span id="clock-local">--:--</span></div>
-    </div>
-  </header>
- 
-  <!-- LEFT PANEL -->
-  <aside class="left-panel">
-    <!-- Character portrait -->
-    <div class="char-frame" id="charFrame" title="Ikraam Sadek">
-      <div class="scan-line"></div>
-      <div class="char-inner">
-        <!-- Male lecturer character — SVG illustration -->
-        <svg class="char-svg" viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <radialGradient id="bgGrad" cx="50%" cy="60%" r="55%">
-              <stop offset="0%" stop-color="#1a0a2e"/>
-              <stop offset="100%" stop-color="#060410"/>
-            </radialGradient>
-            <radialGradient id="skinGrad" cx="50%" cy="40%" r="55%">
-              <stop offset="0%" stop-color="#c8845a"/>
-              <stop offset="100%" stop-color="#8b5230"/>
-            </radialGradient>
-            <radialGradient id="glowRad" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stop-color="rgba(255,107,26,0.25)"/>
-              <stop offset="100%" stop-color="rgba(255,107,26,0)"/>
-            </radialGradient>
-          </defs>
-          <!-- Background -->
-          <rect width="160" height="160" fill="url(#bgGrad)"/>
-          <!-- Ambient glow -->
-          <ellipse cx="80" cy="90" rx="60" ry="50" fill="url(#glowRad)"/>
-          <!-- Circuit lines bg -->
-          <g stroke="rgba(255,107,26,0.12)" stroke-width="0.5" fill="none">
-            <line x1="0" y1="120" x2="40" y2="120"/><line x1="40" y1="120" x2="40" y2="100"/>
-            <line x1="120" y1="130" x2="160" y2="130"/>
-            <line x1="10" y1="60" x2="30" y2="60"/><line x1="30" y1="60" x2="30" y2="40"/>
-            <line x1="140" y1="50" x2="155" y2="50"/>
-            <circle cx="40" cy="100" r="2" fill="rgba(255,107,26,0.3)" stroke="none"/>
-            <circle cx="30" cy="40" r="2" fill="rgba(255,107,26,0.3)" stroke="none"/>
-          </g>
-          <!-- Shoulders / body (academic jacket - dark charcoal) -->
-          <path d="M18 160 Q18 130 30 125 L50 118 Q65 115 80 115 Q95 115 110 118 L130 125 Q142 130 142 160Z" fill="#1c1c2a"/>
-          <!-- Collar / shirt -->
-          <path d="M64 118 L72 110 L80 114 L88 110 L96 118 L88 122 L80 118 L72 122Z" fill="#e8e0d8"/>
-          <!-- Tie (orange accent) -->
-          <path d="M78 112 L80 116 L82 112 L81 124 L80 128 L79 124Z" fill="#ff6b1a"/>
-          <!-- Jacket lapels -->
-          <path d="M64 118 L72 110 L65 125 L50 130Z" fill="#242438"/>
-          <path d="M96 118 L88 110 L95 125 L110 130Z" fill="#242438"/>
-          <!-- Neck -->
-          <rect x="72" y="100" width="16" height="14" rx="4" fill="url(#skinGrad)"/>
-          <!-- Head -->
-          <ellipse cx="80" cy="82" rx="26" ry="28" fill="url(#skinGrad)"/>
-          <!-- Ears -->
-          <ellipse cx="54" cy="82" rx="5" ry="7" fill="#c07848"/>
-          <ellipse cx="106" cy="82" rx="5" ry="7" fill="#c07848"/>
-          <!-- Short dark hair -->
-          <path d="M55 72 Q58 54 80 52 Q102 54 105 72 Q102 60 80 58 Q58 60 55 72Z" fill="#1a1008"/>
-          <ellipse cx="80" cy="56" rx="22" ry="8" fill="#1a1008"/>
-          <!-- Beard/stubble subtle -->
-          <path d="M66 96 Q80 102 94 96 Q90 106 80 108 Q70 106 66 96Z" fill="#8b6040" opacity="0.5"/>
-          <!-- Eyes -->
-          <ellipse cx="70" cy="80" rx="5.5" ry="4" fill="#fff" opacity="0.95"/>
-          <ellipse cx="90" cy="80" rx="5.5" ry="4" fill="#fff" opacity="0.95"/>
-          <ellipse cx="71" cy="80" rx="3.5" ry="3.5" fill="#2a1500"/>
-          <ellipse cx="91" cy="80" rx="3.5" ry="3.5" fill="#2a1500"/>
-          <!-- Pupils -->
-          <circle cx="71" cy="80" r="2" fill="#0a0500"/>
-          <circle cx="91" cy="80" r="2" fill="#0a0500"/>
-          <!-- Eye highlights -->
-          <circle cx="72.5" cy="78.5" r="1" fill="rgba(255,255,255,0.9)"/>
-          <circle cx="92.5" cy="78.5" r="1" fill="rgba(255,255,255,0.9)"/>
-          <!-- Eyebrows -->
-          <path d="M63 73 Q70 70 77 73" stroke="#1a1008" stroke-width="2" fill="none" stroke-linecap="round"/>
-          <path d="M83 73 Q90 70 97 73" stroke="#1a1008" stroke-width="2" fill="none" stroke-linecap="round"/>
-          <!-- Nose -->
-          <path d="M78 84 Q80 90 82 84" stroke="#a06040" stroke-width="1.2" fill="none" stroke-linecap="round"/>
-          <!-- Subtle smile -->
-          <path d="M73 94 Q80 99 87 94" stroke="#8b5030" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-          <!-- Glasses -->
-          <rect x="62" y="75" width="14" height="10" rx="3" fill="none" stroke="rgba(255,107,26,0.7)" stroke-width="1.2"/>
-          <rect x="84" y="75" width="14" height="10" rx="3" fill="none" stroke="rgba(255,107,26,0.7)" stroke-width="1.2"/>
-          <line x1="76" y1="79" x2="84" y2="79" stroke="rgba(255,107,26,0.7)" stroke-width="1"/>
-          <line x1="54" y1="78" x2="62" y2="78" stroke="rgba(255,107,26,0.5)" stroke-width="0.8"/>
-          <line x1="98" y1="78" x2="106" y2="78" stroke="rgba(255,107,26,0.5)" stroke-width="0.8"/>
-          <!-- HUD scan overlay effect -->
-          <rect x="0" y="0" width="160" height="160" fill="none" stroke="rgba(255,107,26,0.4)" stroke-width="1"/>
-          <!-- Orange glow dots -->
-          <circle cx="18" cy="18" r="2" fill="rgba(255,107,26,0.6)"/>
-          <circle cx="142" cy="18" r="2" fill="rgba(255,107,26,0.6)"/>
-          <circle cx="18" cy="142" r="2" fill="rgba(255,107,26,0.6)"/>
-          <circle cx="142" cy="142" r="2" fill="rgba(255,107,26,0.6)"/>
-        </svg>
-      </div>
-      <div class="corner-br"></div>
-    </div>
- 
-    <div class="sep"></div>
- 
-    <div class="info-block">
-      <span class="info-label">Name</span>
-      <span class="info-value">IKRAAM SADEK</span>
-    </div>
-    <div class="info-block">
-      <span class="info-label">Occupation</span>
-      <span class="info-value">JUNIOR LECTURER</span>
-    </div>
-    <div class="info-block">
-      <span class="info-label">Institution</span>
-      <span class="info-value" style="font-size:10px;">BELGIUM CAMPUS<br>SOUTH AFRICA</span>
-    </div>
- 
-    <div class="sep"></div>
- 
-    <div class="info-block">
-      <span class="info-label">Availability</span>
-    </div>
-    <div class="tag-btn">OPEN FOR HIRE <span class="icon">✕</span></div>
- 
-    <div class="info-block">
-      <span class="info-label">Social</span>
-    </div>
-    <a class="tag-btn" href="https://za.linkedin.com/in/ik-sadek" target="_blank" rel="noopener">
-      OPEN CONNECTION <span class="icon" style="font-size:10px;">⟶</span>
-    </a>
- 
-    <div class="sep"></div>
- 
-    <div class="motto">
-      <span class="info-label">Motto</span>
-      <p style="margin-top:4px;">"Enjoys to help people with any issues they come across."</p>
-    </div>
-  </aside>
- 
-  <!-- MAIN PANEL -->
-  <main class="main-panel">
-    <!-- Content overlays for each tab -->
-    <div class="content-overlay" id="overlay-about">
-      <div class="overlay-header">
-        <span class="overlay-title">// ABOUT</span>
-        <span class="overlay-close" onclick="closeOverlay()">✕</span>
-      </div>
-      <div class="overlay-grid">
-        <div class="o-card">
-          <div class="o-card-title">WHO AM I</div>
-          <div class="o-card-text">Junior Lecturer at Belgium Campus ITversity, South Africa. Passionate about empowering students through technology and practical learning experiences.</div>
-          <span class="o-badge">EDUCATOR</span>
-        </div>
-        <div class="o-card">
-          <div class="o-card-title">EXPERTISE</div>
-          <div class="o-card-text">Programming fundamentals, software development principles, and applied computing. Committed to making complex concepts accessible to every student.</div>
-          <span class="o-badge">DEVELOPER</span>
-        </div>
-        <div class="o-card">
-          <div class="o-card-title">INSTITUTION</div>
-          <div class="o-card-text">Belgium Campus ITversity — a leading private higher education institution focused on IT and computing sciences across South Africa.</div>
-          <span class="o-badge">BELGIUM CAMPUS ZA</span>
-        </div>
-        <div class="o-card">
-          <div class="o-card-title">PHILOSOPHY</div>
-          <div class="o-card-text">Believes that no question is too small and no problem too big. Always open to guide students beyond the classroom and into the real world.</div>
-          <span class="o-badge">MENTOR</span>
-        </div>
-      </div>
-    </div>
- 
-    <div class="content-overlay" id="overlay-notes">
-      <div class="overlay-header">
-        <span class="overlay-title">// NOTES</span>
-        <span class="overlay-close" onclick="closeOverlay()">✕</span>
-      </div>
-      <div class="overlay-grid">
-        <div class="o-card">
-          <div class="o-card-title">LECTURE NOTES</div>
-          <div class="o-card-text">Course materials, slides, and supplementary notes will be uploaded here throughout the semester. Check back regularly for updates.</div>
-          <span class="o-badge">IN PROGRESS</span>
-        </div>
-        <div class="o-card">
-          <div class="o-card-title">ANNOUNCEMENTS</div>
-          <div class="o-card-text">Important notices regarding schedule changes, assessment dates, and institutional events will be posted in this section.</div>
-          <span class="o-badge">ACTIVE</span>
-        </div>
-      </div>
-    </div>
- 
-    <div class="content-overlay" id="overlay-achievements">
-      <div class="overlay-header">
-        <span class="overlay-title">// ACHIEVEMENTS</span>
-        <span class="overlay-close" onclick="closeOverlay()">✕</span>
-      </div>
-      <div class="overlay-grid">
-        <div class="o-card">
-          <div class="o-card-title">EDUCATOR RANK</div>
-          <div class="o-card-text">Attained position of Junior Lecturer at Belgium Campus ITversity. Delivering quality education in programming and computer science disciplines.</div>
-          <span class="o-badge">UNLOCKED</span>
-        </div>
-        <div class="o-card">
-          <div class="o-card-title">CURRICULUM DESIGN</div>
-          <div class="o-card-text">Contributing to module development and curriculum planning for programming fundamentals and related subjects.</div>
-          <span class="o-badge">IN PROGRESS</span>
-        </div>
-        <div class="o-card">
-          <div class="o-card-title">STUDENT MENTOR</div>
-          <div class="o-card-text">Actively mentoring students through technical challenges, helping them bridge the gap between theory and practical application.</div>
-          <span class="o-badge">ACTIVE</span>
-        </div>
-      </div>
-    </div>
- 
-    <div class="content-overlay" id="overlay-projects">
-      <div class="overlay-header">
-        <span class="overlay-title">// PROJECTS</span>
-        <span class="overlay-close" onclick="closeOverlay()">✕</span>
-      </div>
-      <div class="overlay-grid">
-        <div class="o-card">
-          <div class="o-card-title">PORTFOLIO SITE</div>
-          <div class="o-card-text">An interactive cyberpunk-themed portfolio website showcasing this lecturer's profile, courses, and achievements. Built with vanilla HTML/CSS/JS.</div>
-          <span class="o-badge">THIS SITE</span>
-        </div>
-        <div class="o-card">
-          <div class="o-card-title">MORE COMING SOON</div>
-          <div class="o-card-text">Additional projects and showcases will be added here. Stay tuned for updates.</div>
-          <span class="o-badge">LOCKED</span>
-        </div>
-      </div>
-    </div>
- 
-    <div class="content-overlay" id="overlay-activities">
-      <div class="overlay-header">
-        <span class="overlay-title">// ACTIVITIES</span>
-        <span class="overlay-close" onclick="closeOverlay()">✕</span>
-      </div>
-      <div class="overlay-grid">
-        <div class="o-card">
-          <div class="o-card-title">OFFICE HOURS</div>
-          <div class="o-card-text">Regular office hours available for student consultations. Details to be confirmed with the department schedule each semester.</div>
-          <span class="o-badge">RECURRING</span>
-        </div>
-        <div class="o-card">
-          <div class="o-card-title">WORKSHOPS</div>
-          <div class="o-card-text">Occasional hands-on coding workshops and extra sessions for students needing additional support in programming modules.</div>
-          <span class="o-badge">SEASONAL</span>
-        </div>
-        <div class="o-card">
-          <div class="o-card-title">ASSESSMENTS</div>
-          <div class="o-card-text">Assessment schedules, deadlines, and submission guidelines for all active modules will be communicated through the official LMS.</div>
-          <span class="o-badge">ACTIVE</span>
-        </div>
-      </div>
-    </div>
- 
-    <!-- Default hero view -->
-    <div class="main-caption">
-      <p>SHAPING THE NEXT GENERATION OF DEVELOPERS<br>THROUGH DEDICATION, PATIENCE AND PRACTICAL KNOWLEDGE</p>
-      <small>BELGIUM CAMPUS ITVERSITY — SOUTH AFRICA</small>
-    </div>
-    <div class="hero-img-wrap">
-      <img
-        src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&q=80&auto=format&fit=crop"
-        alt="Technology background"
-        onerror="this.src=''; this.parentElement.style.background='linear-gradient(135deg,#0a0020 0%,#1a0535 40%,#0d0020 100%)';"
-      />
-    </div>
-  </main>
- 
-  <!-- RIGHT PANEL -->
-  <aside class="right-panel">
-    <div class="quest-header">
-      <span>ACTIVE COURSES</span>
-      <span class="quest-close">✕</span>
-    </div>
-    <div class="quest-body">
-      <div class="quest-sublabel">MODULE DRILL-UP</div>
-      <div class="quest-title">CURRENT<br>TEACHING LOAD</div>
-      <div class="quest-goal">ENGAGE WITH STUDENTS, DELIVER QUALITY LECTURES, FACILITATE LEARNING AND ASSESS PROGRESS.</div>
- 
-      <div class="quest-sublabel" style="margin-bottom:6px;">ACTIVE MODULES</div>
-      <div class="course-tabs">
-        <div class="course-tab active">
-          <div class="ct-code">PRP161</div>
-          <div class="ct-name">Programming Principles</div>
-          <div class="ct-desc">Intro to programming logic, variables, control structures & algorithms.</div>
-        </div>
-        <div class="course-tab">
-          <div class="ct-code">PRG261</div>
-          <div class="ct-name">Programming</div>
-          <div class="ct-desc">Applied programming concepts, OOP fundamentals & project-based development.</div>
-        </div>
-      </div>
-    </div>
- 
-    <div class="right-settings">
-      <div class="setting-row">
-        <span>Sound Effects</span>
-        <div class="toggle on" onclick="toggleSetting(this)">✓</div>
-      </div>
-      <div class="setting-row">
-        <span>Music</span>
-        <div class="toggle off" onclick="toggleSetting(this)">✕</div>
-      </div>
-      <div class="setting-row">
-        <span>Visual Settings</span>
-        <div class="toggle on settings-icon" onclick="toggleSetting(this)">⚙</div>
-      </div>
-    </div>
-  </aside>
- 
-  <!-- TABS BAR -->
-  <nav class="tabs-panel">
-    <div class="tab-item active" onclick="openTab('about', this)">
-      <div class="tab-label">ABOUT <span class="tab-x">✕</span></div>
-      <div class="tab-desc">Lecturer profile, background and philosophy.</div>
-    </div>
-    <div class="tab-item" onclick="openTab('notes', this)">
-      <div class="tab-label">NOTES</div>
-      <div class="tab-desc">Lecture materials, slides and announcements.</div>
-    </div>
-    <div class="tab-item" onclick="openTab('achievements', this)">
-      <div class="tab-label">ACHIEVEMENTS</div>
-      <div class="tab-desc">Milestones, certifications and academic goals.</div>
-    </div>
-    <div class="tab-item" onclick="openTab('projects', this)">
-      <div class="tab-label">PROJECTS</div>
-      <div class="tab-desc">Showcased builds, code and collaborations.</div>
-    </div>
-    <div class="tab-item" onclick="openTab('activities', this)">
-      <div class="tab-label">ACTIVITIES</div>
-      <div class="tab-desc">Office hours, workshops and assessments.</div>
-    </div>
-  </nav>
-</div>
 
-  <script src="../Javascript/script.js"></script>
+<!-- ============================================================
+     PARTICLE CANVAS BACKGROUND
+     ============================================================ -->
+<canvas id="particles-canvas"></canvas>
+
+<!-- ============================================================
+     NAVIGATION
+     ============================================================ -->
+<nav>
+  <div class="nav-logo">IS // Portfolio</div>
+  <ul class="nav-links">
+    <li><a href="#hero">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#modules">Modules</a></li>
+    <li><a href="#facts">Superpowers</a></li>
+    <li><a href="#quotes">Wisdom</a></li>
+    <li><a href="#contact">Connect</a></li>
+  </ul>
+</nav>
+
+<!-- ============================================================
+     SECTION 1 — HERO
+     ============================================================ -->
+<section id="hero">
+  <!-- Animated background grid -->
+  <div class="hero-grid-bg"></div>
+
+  <!-- Floating glow orbs -->
+  <div class="hero-glow-orb orb1"></div>
+  <div class="hero-glow-orb orb2"></div>
+  <div class="hero-glow-orb orb3"></div>
+
+  <!-- SVG Avatar -->
+  <div class="avatar-container">
+    <div class="avatar-glow"></div>
+    <div class="avatar-ring"></div>
+    <div class="avatar-svg-wrapper">
+      <svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="bgGrad" cx="50%" cy="50%" r="60%">
+            <stop offset="0%"   stop-color="#0d1f3c"/>
+            <stop offset="100%" stop-color="#050a14"/>
+          </radialGradient>
+          <radialGradient id="skinGrad" cx="50%" cy="40%" r="60%">
+            <stop offset="0%"   stop-color="#c68642"/>
+            <stop offset="100%" stop-color="#a0632a"/>
+          </radialGradient>
+          <linearGradient id="shirtGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%"   stop-color="#1a3a6e"/>
+            <stop offset="100%" stop-color="#0d1f3c"/>
+          </linearGradient>
+          <filter id="glow">
+            <feGaussianBlur stdDeviation="3" result="blur"/>
+            <feMerge>
+              <feMergeNode in="blur"/>
+              <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+          </filter>
+        </defs>
+
+        <!-- Background circle -->
+        <circle cx="110" cy="110" r="110" fill="url(#bgGrad)"/>
+
+        <!-- Subtle grid lines -->
+        <g opacity="0.08" stroke="#1a6fff" stroke-width="0.5">
+          <line x1="0"   y1="55"  x2="220" y2="55"/>
+          <line x1="0"   y1="110" x2="220" y2="110"/>
+          <line x1="0"   y1="165" x2="220" y2="165"/>
+          <line x1="55"  y1="0"   x2="55"  y2="220"/>
+          <line x1="110" y1="0"   x2="110" y2="220"/>
+          <line x1="165" y1="0"   x2="165" y2="220"/>
+        </g>
+
+        <!-- Body / Shirt -->
+        <ellipse cx="110" cy="185" rx="60" ry="38" fill="url(#shirtGrad)"/>
+        <ellipse cx="110" cy="175" rx="45" ry="30" fill="#1a3a6e"/>
+
+        <!-- Collar & tie -->
+        <polygon points="110,148 100,162 110,168 120,162" fill="#fff" opacity="0.9"/>
+        <polygon points="110,162 107,185 113,185" fill="#1a6fff" opacity="0.8"/>
+
+        <!-- Neck -->
+        <rect x="97" y="140" width="26" height="18" rx="5" fill="url(#skinGrad)"/>
+
+        <!-- Head -->
+        <ellipse cx="110" cy="108" rx="46" ry="50" fill="url(#skinGrad)"/>
+
+        <!-- Ears -->
+        <ellipse cx="64"  cy="108" rx="8" ry="11" fill="#b07030"/>
+        <ellipse cx="156" cy="108" rx="8" ry="11" fill="#b07030"/>
+
+        <!-- Hair -->
+        <path d="M65,88 Q68,55 110,52 Q152,55 155,88 Q145,70 110,68 Q75,70 65,88Z" fill="#1a0e00"/>
+        <path d="M65,88 Q62,75 68,68"   fill="none" stroke="#1a0e00" stroke-width="3"/>
+        <path d="M155,88 Q158,75 152,68" fill="none" stroke="#1a0e00" stroke-width="3"/>
+
+        <!-- Beard stubble -->
+        <ellipse cx="110" cy="143" rx="30" ry="12" fill="#3a1f00" opacity="0.35"/>
+        <ellipse cx="95"  cy="138" rx="12" ry="6"  fill="#3a1f00" opacity="0.2"/>
+        <ellipse cx="125" cy="138" rx="12" ry="6"  fill="#3a1f00" opacity="0.2"/>
+
+        <!-- Left eye -->
+        <ellipse cx="90" cy="105" rx="10" ry="9"   fill="#fff"/>
+        <ellipse cx="90" cy="106" rx="6.5" ry="6.5" fill="#2a1a00"/>
+        <ellipse cx="90" cy="106" rx="4"   ry="4"   fill="#0d0800"/>
+        <ellipse cx="88" cy="104" rx="1.5" ry="1.5" fill="#fff"/>
+        <path d="M79,93 Q90,88 101,92" fill="none" stroke="#1a0e00" stroke-width="3.5" stroke-linecap="round"/>
+
+        <!-- Right eye -->
+        <ellipse cx="130" cy="105" rx="10"  ry="9"   fill="#fff"/>
+        <ellipse cx="130" cy="106" rx="6.5" ry="6.5" fill="#2a1a00"/>
+        <ellipse cx="130" cy="106" rx="4"   ry="4"   fill="#0d0800"/>
+        <ellipse cx="128" cy="104" rx="1.5" ry="1.5" fill="#fff"/>
+        <path d="M119,93 Q130,88 141,92" fill="none" stroke="#1a0e00" stroke-width="3.5" stroke-linecap="round"/>
+
+        <!-- Glasses -->
+        <rect x="78"  y="97" width="26" height="20" rx="8" fill="none" stroke="#00d4ff" stroke-width="2" opacity="0.8"/>
+        <rect x="116" y="97" width="26" height="20" rx="8" fill="none" stroke="#00d4ff" stroke-width="2" opacity="0.8"/>
+        <line x1="104" y1="106" x2="116" y2="106" stroke="#00d4ff" stroke-width="2"   opacity="0.8"/>
+        <line x1="64"  y1="103" x2="78"  y2="104" stroke="#00d4ff" stroke-width="1.5" opacity="0.8"/>
+        <line x1="142" y1="104" x2="156" y2="103" stroke="#00d4ff" stroke-width="1.5" opacity="0.8"/>
+
+        <!-- Nose -->
+        <path d="M108,112 Q105,125 100,130 Q110,134 120,130 Q115,125 112,112" fill="#a06030" opacity="0.4"/>
+
+        <!-- Smile -->
+        <path d="M95,138 Q110,150 125,138" fill="none" stroke="#7a4020" stroke-width="2.5" stroke-linecap="round"/>
+
+        <!-- Floating code symbol -->
+        <g filter="url(#glow)" opacity="0.7">
+          <text x="85" y="38" font-family="monospace" font-size="11" fill="#00d4ff">&lt;/&gt;</text>
+        </g>
+
+        <!-- Glasses glint -->
+        <rect x="80"  y="99" width="8" height="3" rx="1" fill="#fff" opacity="0.3"/>
+        <rect x="118" y="99" width="8" height="3" rx="1" fill="#fff" opacity="0.3"/>
+
+        <!-- Outer ring glow -->
+        <circle cx="110" cy="110" r="108" fill="none" stroke="url(#shirtGrad)" stroke-width="1" opacity="0.3"/>
+      </svg>
+    </div>
+  </div>
+
+  <!-- Hero text content -->
+  <div class="hero-badge">Belgium Campus // Programming Dept.</div>
+
+  <h1 class="hero-name">
+    <span class="first">Mr. Ikraam</span>
+    <span class="last">Sadek</span>
+  </h1>
+
+  <p class="hero-title">Junior Lecturer — Advanced Diploma in Application Development</p>
+  <p class="hero-tagline">Quick learner. Engaging teacher. Practical builder.</p>
+
+  <div class="hero-cta">
+    <a href="#modules" class="btn-primary">Explore Modules</a>
+    <a href="#contact"  class="btn-secondary">Connect</a>
+  </div>
+
+  <!-- Scroll cue -->
+  <div class="scroll-indicator">
+    <span>Scroll</span>
+    <div class="scroll-mouse">
+      <div class="scroll-dot"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION 2 — ABOUT / PROFILE
+     ============================================================ -->
+<section id="about">
+  <div style="max-width:1100px; width:100%;">
+
+    <div class="section-header scroll-reveal">
+      <span class="section-tag">// 01 — Profile</span>
+      <h2 class="section-title">About <span>The Lecturer</span></h2>
+    </div>
+
+    <div class="about-grid">
+
+      <!-- Bio card -->
+      <div class="bio-card">
+        <div class="bio-name">Mr. Ikraam Sadek</div>
+        <div class="bio-role">// JUNIOR LECTURER — PROGRAMMING DEPT.</div>
+
+        <p class="bio-text">
+          Mr. Sadek is a dynamic and engaging Junior Lecturer at Belgium Campus iTversity,
+          holding an Advanced Diploma in Application Development from Rosebank College.
+          He teaches across multiple programming and information systems modules,
+          from first-year fundamentals to second-year advanced topics.
+        </p>
+        <p class="bio-text">
+          His classrooms are built on discussion, interaction, and real-world application.
+          He believes learning happens best when students are active participants — not passive listeners.
+        </p>
+
+        <!-- Typing effect element -->
+        <div class="typing-text" id="typing-el">Building the next generation of developers&nbsp;</div>
+
+        <!-- Skill bars -->
+        <div class="skill-bars" style="margin-top:28px;">
+
+          <div class="skill-bar-item">
+            <div class="skill-bar-label">
+              <span class="skill-bar-name">Quick Learning</span>
+              <span class="skill-bar-pct">95%</span>
+            </div>
+            <div class="skill-bar-track">
+              <div class="skill-bar-fill" style="--w:95%"></div>
+            </div>
+          </div>
+
+          <div class="skill-bar-item">
+            <div class="skill-bar-label">
+              <span class="skill-bar-name">Student Helpfulness</span>
+              <span class="skill-bar-pct">92%</span>
+            </div>
+            <div class="skill-bar-track">
+              <div class="skill-bar-fill" style="--w:92%"></div>
+            </div>
+          </div>
+
+          <div class="skill-bar-item">
+            <div class="skill-bar-label">
+              <span class="skill-bar-name">Interactive Teaching</span>
+              <span class="skill-bar-pct">88%</span>
+            </div>
+            <div class="skill-bar-track">
+              <div class="skill-bar-fill" style="--w:88%"></div>
+            </div>
+          </div>
+
+          <div class="skill-bar-item">
+            <div class="skill-bar-label">
+              <span class="skill-bar-name">Practical Application</span>
+              <span class="skill-bar-pct">90%</span>
+            </div>
+            <div class="skill-bar-track">
+              <div class="skill-bar-fill" style="--w:90%"></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Badge grid -->
+      <div class="badges-grid">
+        <div class="badge-item">
+          <span class="badge-icon">🎓</span>
+          <div class="badge-label">Qualification</div>
+          <div class="badge-value">Adv. Diploma</div>
+        </div>
+        <div class="badge-item">
+          <span class="badge-icon">🏫</span>
+          <div class="badge-label">Institution</div>
+          <div class="badge-value">Rosebank College</div>
+        </div>
+        <div class="badge-item">
+          <span class="badge-icon">💻</span>
+          <div class="badge-label">Department</div>
+          <div class="badge-value">Programming</div>
+        </div>
+        <div class="badge-item">
+          <span class="badge-icon">📚</span>
+          <div class="badge-label">Modules</div>
+          <div class="badge-value">11 Modules</div>
+        </div>
+        <div class="badge-item">
+          <span class="badge-icon">⚡</span>
+          <div class="badge-label">Superpower</div>
+          <div class="badge-value">Helpfulness</div>
+        </div>
+        <div class="badge-item">
+          <span class="badge-icon">🪵</span>
+          <div class="badge-label">Fun Fact</div>
+          <div class="badge-value">Carpentry</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION 3 — MODULES & EXPERTISE
+     ============================================================ -->
+<section id="modules">
+  <div style="max-width:1100px; width:100%;">
+
+    <div class="section-header scroll-reveal">
+      <span class="section-tag">// 02 — Expertise</span>
+      <h2 class="section-title">Modules &amp; <span>Teaching</span></h2>
+    </div>
+
+    <p class="module-card-hover-hint scroll-reveal">↗ Hover over cards to flip and reveal details</p>
+
+    <div class="modules-grid" style="margin-top:16px;">
+
+      <!-- Card 1 -->
+      <div class="module-card scroll-reveal">
+        <div class="module-card-inner">
+          <div class="module-front">
+            <div class="module-code">PRL161</div>
+            <div class="module-name">Programming Preliminaries</div>
+            <div class="module-year">1st Year</div>
+          </div>
+          <div class="module-back">
+            <div class="module-back-code">PRL161</div>
+            <div class="module-name" style="font-size:0.95rem;">Programming Preliminaries</div>
+            <div class="module-back-desc">
+              Foundational programming concepts, logic, and problem-solving skills for
+              first-year students entering the software development world.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="module-card scroll-reveal">
+        <div class="module-card-inner">
+          <div class="module-front">
+            <div class="module-code">PRG181 / PRG171</div>
+            <div class="module-name">Programming 1st Year</div>
+            <div class="module-year">1st Year</div>
+          </div>
+          <div class="module-back">
+            <div class="module-back-code">PRG181 / PRG171</div>
+            <div class="module-name" style="font-size:0.95rem;">Programming 1st Year</div>
+            <div class="module-back-desc">
+              Core programming principles, syntax, and applied coding —
+              building practical skills from the ground up.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="module-card scroll-reveal">
+        <div class="module-card-inner">
+          <div class="module-front">
+            <div class="module-code">WPR281 / WPR271</div>
+            <div class="module-name">Web Programming</div>
+            <div class="module-year">2nd Year</div>
+          </div>
+          <div class="module-back">
+            <div class="module-back-code">WPR281 / WPR271</div>
+            <div class="module-name" style="font-size:0.95rem;">Web Programming 2nd Year</div>
+            <div class="module-back-desc">
+              Modern web development covering HTML, CSS, JavaScript, and server-side
+              technologies for building real-world applications.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="module-card scroll-reveal">
+        <div class="module-card-inner">
+          <div class="module-front">
+            <div class="module-code">PRG261 / PRG262 / PRG2782</div>
+            <div class="module-name">Programming 2nd Year</div>
+            <div class="module-year">2nd Year</div>
+          </div>
+          <div class="module-back">
+            <div class="module-back-code">PRG261 / PRG262 / PRG2782</div>
+            <div class="module-name" style="font-size:0.95rem;">Programming 2nd Year</div>
+            <div class="module-back-desc">
+              Advanced programming concepts — OOP, data structures, algorithms,
+              and software design patterns.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="module-card scroll-reveal">
+        <div class="module-card-inner">
+          <div class="module-front">
+            <div class="module-code">SWA261</div>
+            <div class="module-name">Software Analysis</div>
+            <div class="module-year">2nd Year</div>
+          </div>
+          <div class="module-back">
+            <div class="module-back-code">SWA261</div>
+            <div class="module-name" style="font-size:0.95rem;">Software Analysis</div>
+            <div class="module-back-desc">
+              Requirements elicitation, system modeling, UML diagrams, and process
+              analysis for real-world software projects.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="module-card scroll-reveal">
+        <div class="module-card-inner">
+          <div class="module-front">
+            <div class="module-code">SWT261</div>
+            <div class="module-name">Software Testing 1</div>
+            <div class="module-year">2nd Year</div>
+          </div>
+          <div class="module-back">
+            <div class="module-back-code">SWT261</div>
+            <div class="module-name" style="font-size:0.95rem;">Software Testing 1</div>
+            <div class="module-back-desc">
+              Unit testing, test-driven development, debugging strategies,
+              and quality assurance practices in modern software delivery.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 7 -->
+      <div class="module-card scroll-reveal">
+        <div class="module-card-inner">
+          <div class="module-front">
+            <div class="module-code">INF2781</div>
+            <div class="module-name">Information Systems</div>
+            <div class="module-year">2nd Year</div>
+          </div>
+          <div class="module-back">
+            <div class="module-back-code">INF2781</div>
+            <div class="module-name" style="font-size:0.95rem;">Information Systems 2nd Year</div>
+            <div class="module-back-desc">
+              Systems thinking, database design, information architecture,
+              and enterprise-level IS concepts and applications.
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION 4 — FUN FACTS & SUPERPOWERS
+     ============================================================ -->
+<section id="facts">
+  <div class="facts-container" style="width:100%;">
+
+    <div class="section-header scroll-reveal">
+      <span class="section-tag">// 03 — The Human Behind The Code</span>
+      <h2 class="section-title">Fun Facts &amp; <span>Superpowers</span></h2>
+    </div>
+
+    <div class="facts-grid">
+
+      <div class="fact-item scroll-reveal" onclick="this.classList.toggle('revealed')">
+        <span class="fact-emoji">⚡</span>
+        <div class="fact-title">The Superpower</div>
+        <div class="fact-prompt">Click to reveal</div>
+        <div class="fact-text">
+          Mr. Sadek's greatest strength is his <strong>helpfulness</strong> — he has a unique ability
+          to break down complex concepts and make them click for any student.
+          His door (and DMs) are always open.
+        </div>
+      </div>
+
+      <div class="fact-item scroll-reveal" onclick="this.classList.toggle('revealed')">
+        <span class="fact-emoji">🪵</span>
+        <div class="fact-title">Hidden Talent</div>
+        <div class="fact-prompt">Click to reveal</div>
+        <div class="fact-text">
+          Off-campus, Mr. Sadek is a passionate <strong>carpenter</strong>.
+          Growing up, he and his grandfather built cupboards, desks, and frames entirely by hand —
+          craftsmanship runs deep in his DNA.
+        </div>
+      </div>
+
+      <div class="fact-item scroll-reveal" onclick="this.classList.toggle('revealed')">
+        <span class="fact-emoji">🧠</span>
+        <div class="fact-title">Quick Learner</div>
+        <div class="fact-prompt">Click to reveal</div>
+        <div class="fact-text">
+          His professional tagline? <strong>Quick learning</strong>.
+          He can absorb a new concept, internalize it, and immediately start teaching it to others —
+          a rare skill that makes him exceptionally effective.
+        </div>
+      </div>
+
+      <div class="fact-item scroll-reveal" onclick="this.classList.toggle('revealed')">
+        <span class="fact-emoji">💬</span>
+        <div class="fact-title">Teaching Style</div>
+        <div class="fact-prompt">Click to reveal</div>
+        <div class="fact-text">
+          He runs <strong>discussion-driven classes</strong> — not one-sided lectures.
+          Students are expected to engage, debate, and co-create understanding.
+          Passive learning is not on the syllabus.
+        </div>
+      </div>
+
+      <div class="fact-item scroll-reveal" onclick="this.classList.toggle('revealed')">
+        <span class="fact-emoji">🌙</span>
+        <div class="fact-title">After Hours</div>
+        <div class="fact-prompt">Click to reveal</div>
+        <div class="fact-text">
+          Officially Mon–Thu 8AM–5PM, Fri 8AM–4PM. But if you need him,
+          Mr. Sadek often stays until <strong>6 or 7PM</strong> —
+          because good lecturers don't clock out at 5.
+        </div>
+      </div>
+
+      <div class="fact-item scroll-reveal" onclick="this.classList.toggle('revealed')">
+        <span class="fact-emoji">🎨</span>
+        <div class="fact-title">Aesthetic Vibe</div>
+        <div class="fact-prompt">Click to reveal</div>
+        <div class="fact-text">
+          Prefers <strong>dark, bold colour palettes</strong> — black, blue, purple, maroon, grey.
+          Clean. Technical. Professional. This very website is inspired by his taste.
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION 5 — QUOTE WALL
+     ============================================================ -->
+<section id="quotes">
+  <div style="max-width:800px; width:100%;">
+
+    <div class="section-header scroll-reveal">
+      <span class="section-tag">// 04 — Words of Wisdom</span>
+      <h2 class="section-title">Teaching <span>Philosophy</span></h2>
+    </div>
+
+    <div class="quote-carousel" id="quoteCarousel">
+
+      <div class="quote-item active">
+        <span class="quote-mark">"</span>
+        <p class="quote-text">
+          After you get your marks and feedback on a practical project, apply that feedback and
+          rebuild it. Then put it on GitHub. Companies don't just want to see that you know
+          things — they want to see that you can actually do things.
+        </p>
+        <div class="quote-attribution">— MR. IKRAAM SADEK // Career Advice</div>
+      </div>
+
+      <div class="quote-item">
+        <span class="quote-mark">"</span>
+        <p class="quote-text">
+          The best way to learn is through discussions with a class — not a one-sided lecture.
+          I want my students to engage, question, and challenge ideas.
+          That's where real understanding is built.
+        </p>
+        <div class="quote-attribution">— MR. IKRAAM SADEK // Teaching Philosophy</div>
+      </div>
+
+      <div class="quote-item">
+        <span class="quote-mark">"</span>
+        <p class="quote-text">
+          A portfolio of real projects on GitHub speaks louder than any certificate.
+          Show the world not just that you studied programming —
+          but that you lived it, built it, and deployed it.
+        </p>
+        <div class="quote-attribution">— MR. IKRAAM SADEK // On GitHub Portfolios</div>
+      </div>
+
+      <div class="quote-item">
+        <span class="quote-mark">"</span>
+        <p class="quote-text">
+          I try to ensure my classes are engaging and interactive.
+          When you're actively involved in the conversation, the knowledge sticks.
+          That's not just pedagogy — that's common sense.
+        </p>
+        <div class="quote-attribution">— MR. IKRAAM SADEK // On Engagement</div>
+      </div>
+
+    </div>
+
+    <!-- Carousel navigation dots -->
+    <div class="quote-dots" id="quoteDots">
+      <div class="quote-dot active" onclick="goToQuote(0)"></div>
+      <div class="quote-dot"        onclick="goToQuote(1)"></div>
+      <div class="quote-dot"        onclick="goToQuote(2)"></div>
+      <div class="quote-dot"        onclick="goToQuote(3)"></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION 6 — CONTACT / CONNECT
+     ============================================================ -->
+<section id="contact">
+  <div style="max-width:1000px; width:100%;">
+
+    <div class="section-header scroll-reveal">
+      <span class="section-tag">// 05 — Connect</span>
+      <h2 class="section-title">Get In <span>Touch</span></h2>
+    </div>
+
+    <div class="contact-grid">
+
+      <!-- Department info card -->
+      <div class="contact-card">
+        <div class="contact-card-title">// Department Info</div>
+
+        <div class="contact-row">
+          <div class="contact-icon">🏛️</div>
+          <div>
+            <div class="contact-info-label">Institution</div>
+            <div class="contact-info-value">Belgium Campus iTversity</div>
+          </div>
+        </div>
+
+        <div class="contact-row">
+          <div class="contact-icon">💻</div>
+          <div>
+            <div class="contact-info-label">Department</div>
+            <div class="contact-info-value">Programming Department</div>
+          </div>
+        </div>
+
+        <div class="contact-row">
+          <div class="contact-icon">🎓</div>
+          <div>
+            <div class="contact-info-label">Title &amp; Role</div>
+            <div class="contact-info-value">Mr. Ikraam Sadek — Junior Lecturer</div>
+          </div>
+        </div>
+
+        <div class="contact-row">
+          <div class="contact-icon">📋</div>
+          <div>
+            <div class="contact-info-label">Qualification</div>
+            <div class="contact-info-value">Advanced Diploma in Application Development</div>
+          </div>
+        </div>
+
+        <a href="#" class="cta-btn"><span>🔗 Connect via Belgium Campus</span></a>
+      </div>
+
+      <!-- Office hours card -->
+      <div class="contact-card" style="transition-delay:0.2s;">
+        <div class="contact-card-title">// Office Hours</div>
+
+        <div class="office-hours-grid">
+          <div class="hours-row">
+            <span class="hours-day">Monday</span>
+            <span class="hours-time">08:00 — 17:00</span>
+          </div>
+          <div class="hours-row">
+            <span class="hours-day">Tuesday</span>
+            <span class="hours-time">08:00 — 17:00</span>
+          </div>
+          <div class="hours-row">
+            <span class="hours-day">Wednesday</span>
+            <span class="hours-time">08:00 — 17:00</span>
+          </div>
+          <div class="hours-row">
+            <span class="hours-day">Thursday</span>
+            <span class="hours-time">08:00 — 17:00</span>
+          </div>
+          <div class="hours-row">
+            <span class="hours-day">Friday</span>
+            <span class="hours-time">08:00 — 16:00</span>
+          </div>
+          <div class="hours-row after-hours">
+            <span class="hours-day after-label">After Hours*</span>
+            <span class="hours-time after-time">Until ~18:00–19:00</span>
+          </div>
+        </div>
+
+        <p class="hours-note">* After-hours availability is not guaranteed but he tries his best!</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer>
+  <p>
+    Built with <span>Claude AI</span> ·
+    Deployed on <span>GitHub Pages</span> ·
+    Belgium Campus iTversity — INL261 Group Project ·
+    <span>2026</span>
+  </p>
+</footer>
+
+<!-- External JavaScript -->
+<script src="script.js"></script>
+
 </body>
 </html>
