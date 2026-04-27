@@ -1,7 +1,7 @@
 /* ═══════════════════════════════════════════════════
    IKRAAM SADEK PORTFOLIO — script.js
 ═══════════════════════════════════════════════════ */
- 
+
 /* ── SPLASH SCREEN ── */
 document.getElementById('enterBtn').addEventListener('click', function () {
   const splash = document.getElementById('splash');
@@ -9,7 +9,7 @@ document.getElementById('enterBtn').addEventListener('click', function () {
   splash.classList.add('hidden');
   hud.classList.add('visible');
 });
- 
+
 /* ── LIVE CLOCKS ── */
 function updateClocks() {
   const now = new Date();
@@ -21,10 +21,10 @@ function updateClocks() {
 }
 updateClocks();
 setInterval(updateClocks, 1000);
- 
+
 /* ── TAB SWITCHING with animation ── */
 let currentOverlay = null;
- 
+
 function openTab(name, el) {
   // Deactivate old
   document.querySelectorAll('.tab-item').forEach(t => t.classList.remove('active'));
@@ -32,7 +32,7 @@ function openTab(name, el) {
   document.querySelectorAll('.content-overlay').forEach(o => {
     o.classList.remove('visible');
   });
- 
+
   // Short delay to let browser reset the animation
   requestAnimationFrame(() => {
     requestAnimationFrame(() => {
@@ -43,13 +43,13 @@ function openTab(name, el) {
     });
   });
 }
- 
+
 function closeOverlay() {
   document.querySelectorAll('.content-overlay').forEach(o => o.classList.remove('visible'));
   document.querySelectorAll('.tab-item').forEach(t => t.classList.remove('active'));
   currentOverlay = null;
 }
- 
+
 /* ── COURSE TAB TOGGLE ── */
 document.querySelectorAll('.course-tab').forEach(ct => {
   ct.addEventListener('click', () => {
@@ -57,7 +57,7 @@ document.querySelectorAll('.course-tab').forEach(ct => {
     ct.classList.add('active');
   });
 });
- 
+
 /* ── SETTINGS TOGGLES ── */
 function toggleSetting(el) {
   if (el.classList.contains('on')) {
@@ -68,21 +68,34 @@ function toggleSetting(el) {
     el.textContent = '✓';
   }
 }
- 
-/* ── CHARACTER GLITCH ON CLICK ── */
+
+/* ── CHARACTER CLICK → BIO OVERLAY ── */
 const charFrame = document.getElementById('charFrame');
+const charBio   = document.getElementById('char-bio-overlay');
+
 charFrame.addEventListener('click', function () {
+  // Brief glitch first, then open bio
   this.classList.add('glitching');
-  setTimeout(() => this.classList.remove('glitching'), 400);
+  setTimeout(() => {
+    this.classList.remove('glitching');
+    // Close any tab overlays first
+    document.querySelectorAll('.content-overlay').forEach(o => o.classList.remove('visible'));
+    document.querySelectorAll('.tab-item').forEach(t => t.classList.remove('active'));
+    charBio.classList.add('visible');
+  }, 320);
 });
- 
+
+function closeCharBio() {
+  charBio.classList.remove('visible');
+}
+
 /* ── FUN FACT REVEAL ── */
 document.querySelectorAll('.fact-card').forEach(card => {
   card.addEventListener('click', () => {
     card.classList.toggle('revealed');
   });
 });
- 
+
 /* ── QUOTE ROTATOR ── */
 const quotes = [
   '"After you get your feedback on a project, apply it — and build a portfolio on GitHub. Show companies you can do it practically, not just theoretically."',
@@ -103,10 +116,13 @@ if (quoteEl) {
     quoteEl.style.transition = 'opacity 0.5s ease';
   }, 6000);
 }
- 
+
 /* ── KEYBOARD: ESC closes overlay ── */
 document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') closeOverlay();
+  if (e.key === 'Escape') {
+    closeOverlay();
+    closeCharBio();
+  }
   if (e.key === 'Enter' && document.getElementById('splash') &&
       !document.getElementById('splash').classList.contains('hidden')) {
     document.getElementById('enterBtn').click();

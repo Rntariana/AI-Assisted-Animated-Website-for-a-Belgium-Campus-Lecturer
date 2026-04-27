@@ -137,6 +137,7 @@
         </svg>
       </div>
       <div class="corner-br"></div>
+      <div class="char-hint">[ CLICK ]</div>
     </div>
  
     <div class="sep-red"></div>
@@ -593,17 +594,388 @@
       </div>
     </div>
  
+    <!-- ── CHARACTER BIO OVERLAY (opened by clicking portrait) ── -->
+    <div id="char-bio-overlay">
+      <div class="bio-topbar">
+        <div class="bio-title-line">WHO IS IKRAAM SADEK</div>
+        <span class="bio-close" onclick="closeCharBio()">[ CLOSE ]</span>
+      </div>
+ 
+      <div class="bio-body">
+        <!-- Left: section labels -->
+        <div class="bio-labels">
+          <div class="bio-section-label" style="margin-top:16px;">The Short Introduction<br>of My Life</div>
+          <div class="bio-section-spacer" style="flex:1.2;"></div>
+          <div class="bio-section-label">Career &amp;<br>Development</div>
+          <div class="bio-section-spacer" style="flex:1.4;"></div>
+          <div class="bio-section-label">More Can Be Added<br>on the Left Side<br>for Summary</div>
+        </div>
+ 
+        <!-- Centre: bio text -->
+        <div class="bio-text-col">
+          <div class="bio-text-block">
+            I have always been driven by a passion for <strong>problem-solving</strong> and a genuine desire to help others navigate complex challenges. My career path led me to education — where I found that <strong>teaching is the most impactful way</strong> to share knowledge and lift others up. I joined Belgium Campus iTversity as a Junior Lecturer, and it has been an incredibly rewarding journey.
+          </div>
+          <div class="bio-text-block">
+            Across my career, I have developed expertise in <strong>software development, web programming, and application design</strong>. I hold an Advanced Diploma in Application Development from Rosebank College. I currently teach 11 modules spanning first and second-year level, covering programming, web development, software analysis, software testing, and information systems. My approach is always <strong>discussion-based and interactive</strong> — because I believe the best learning happens in conversation, not in isolation.
+          </div>
+          <div class="bio-text-block">
+            My priority as an educator is to ensure students leave with <strong>practical, demonstrable skills</strong>. I always encourage students to apply their feedback, build real projects, and publish them on GitHub — because a live portfolio speaks louder than any exam result. My signature approach is simple: <strong>"We'll make it work."</strong> Whatever the challenge, we find a way through it together.
+          </div>
+        </div>
+ 
+        <!-- Right: wireframe skeleton figure -->
+        <div class="bio-skeleton-col">
+          <div class="skeleton-scan"></div>
+          <svg class="bio-skeleton-svg" viewBox="0 0 240 480" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <radialGradient id="skelBg" cx="50%" cy="50%" r="55%">
+                <stop offset="0%" stop-color="rgba(224,32,26,0.06)"/>
+                <stop offset="100%" stop-color="rgba(0,0,0,0)"/>
+              </radialGradient>
+              <filter id="skelGlow">
+                <feGaussianBlur stdDeviation="2.5" result="blur"/>
+                <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+              </filter>
+              <filter id="skelGlowStrong">
+                <feGaussianBlur stdDeviation="5" result="blur"/>
+                <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+              </filter>
+            </defs>
+ 
+            <!-- Background ambient glow -->
+            <ellipse cx="120" cy="260" rx="100" ry="200" fill="url(#skelBg)"/>
+ 
+            <!-- Ground glow -->
+            <ellipse cx="120" cy="455" rx="65" ry="10" fill="rgba(224,32,26,0.18)" filter="url(#skelGlow)"/>
+ 
+            <g class="skeleton-glow" stroke="rgba(224,32,26,0.85)" stroke-width="1.2" fill="none" filter="url(#skelGlow)">
+ 
+              <!-- HEAD — oval skull -->
+              <ellipse cx="120" cy="52" rx="22" ry="26" stroke="rgba(224,32,26,0.9)" stroke-width="1.3"/>
+              <!-- Skull top detail -->
+              <line x1="98" y1="42" x2="142" y2="42" stroke="rgba(224,32,26,0.4)" stroke-width="0.7"/>
+              <!-- Eye sockets -->
+              <ellipse cx="111" cy="50" rx="6" ry="5" stroke="rgba(224,32,26,0.7)" stroke-width="0.9"/>
+              <ellipse cx="129" cy="50" rx="6" ry="5" stroke="rgba(224,32,26,0.7)" stroke-width="0.9"/>
+              <!-- Eye glow dots -->
+              <circle cx="111" cy="50" r="2.5" fill="rgba(224,32,26,0.9)" stroke="none" filter="url(#skelGlowStrong)">
+                <animate attributeName="opacity" values="0.6;1;0.6" dur="2.2s" repeatCount="indefinite"/>
+              </circle>
+              <circle cx="129" cy="50" r="2.5" fill="rgba(224,32,26,0.9)" stroke="none" filter="url(#skelGlowStrong)">
+                <animate attributeName="opacity" values="1;0.6;1" dur="2.2s" repeatCount="indefinite"/>
+              </circle>
+              <!-- Nose bridge -->
+              <line x1="120" y1="55" x2="120" y2="64" stroke="rgba(224,32,26,0.4)" stroke-width="0.8"/>
+              <!-- Jaw -->
+              <path d="M98 68 Q120 80 142 68" stroke="rgba(224,32,26,0.7)" stroke-width="1"/>
+ 
+              <!-- NECK -->
+              <line x1="113" y1="77" x2="110" y2="94" stroke-width="1"/>
+              <line x1="127" y1="77" x2="130" y2="94" stroke-width="1"/>
+              <line x1="110" y1="94" x2="130" y2="94" stroke-width="0.8"/>
+ 
+              <!-- COLLAR BONES (clavicles) -->
+              <line x1="110" y1="95" x2="75" y2="108" stroke-width="1.2"/>
+              <line x1="130" y1="95" x2="165" y2="108" stroke-width="1.2"/>
+ 
+              <!-- RIBCAGE -->
+              <!-- Spine -->
+              <line x1="120" y1="95" x2="120" y2="200" stroke-width="1.1"/>
+              <!-- Spine vertebrae -->
+              <g stroke="rgba(224,32,26,0.5)" stroke-width="0.7">
+                <line x1="115" y1="105" x2="125" y2="105"/>
+                <line x1="115" y1="115" x2="125" y2="115"/>
+                <line x1="115" y1="125" x2="125" y2="125"/>
+                <line x1="115" y1="135" x2="125" y2="135"/>
+                <line x1="115" y1="145" x2="125" y2="145"/>
+                <line x1="115" y1="155" x2="125" y2="155"/>
+                <line x1="115" y1="165" x2="125" y2="165"/>
+                <line x1="115" y1="175" x2="125" y2="175"/>
+                <line x1="115" y1="185" x2="125" y2="185"/>
+              </g>
+              <!-- Ribs left -->
+              <path d="M120 108 Q95 112 80 125 Q78 132 90 134 Q105 136 120 130" stroke-width="1" stroke="rgba(224,32,26,0.75)"/>
+              <path d="M120 118 Q93 122 78 136 Q76 144 90 146 Q107 148 120 140" stroke-width="1" stroke="rgba(224,32,26,0.65)"/>
+              <path d="M120 128 Q92 132 77 148 Q76 157 90 158 Q108 160 120 152" stroke-width="1" stroke="rgba(224,32,26,0.55)"/>
+              <path d="M120 140 Q95 144 82 160 Q81 170 92 170 Q109 172 120 164" stroke-width="0.9" stroke="rgba(224,32,26,0.45)"/>
+              <path d="M120 152 Q99 156 90 170 Q89 180 98 180 Q112 181 120 175" stroke-width="0.8" stroke="rgba(224,32,26,0.35)"/>
+              <!-- Ribs right -->
+              <path d="M120 108 Q145 112 160 125 Q162 132 150 134 Q135 136 120 130" stroke-width="1" stroke="rgba(224,32,26,0.75)"/>
+              <path d="M120 118 Q147 122 162 136 Q164 144 150 146 Q133 148 120 140" stroke-width="1" stroke="rgba(224,32,26,0.65)"/>
+              <path d="M120 128 Q148 132 163 148 Q164 157 150 158 Q132 160 120 152" stroke-width="1" stroke="rgba(224,32,26,0.55)"/>
+              <path d="M120 140 Q145 144 158 160 Q159 170 148 170 Q131 172 120 164" stroke-width="0.9" stroke="rgba(224,32,26,0.45)"/>
+              <path d="M120 152 Q141 156 150 170 Q151 180 142 180 Q128 181 120 175" stroke-width="0.8" stroke="rgba(224,32,26,0.35)"/>
+ 
+              <!-- SHOULDERS -->
+              <circle cx="72" cy="110" r="7" stroke-width="1.2"/>
+              <circle cx="168" cy="110" r="7" stroke-width="1.2"/>
+ 
+              <!-- UPPER ARMS (humerus) -->
+              <line x1="66" y1="116" x2="55" y2="175" stroke-width="1.2"/>
+              <line x1="174" y1="116" x2="185" y2="175" stroke-width="1.2"/>
+ 
+              <!-- ELBOWS -->
+              <circle cx="54" cy="177" r="5" stroke-width="1"/>
+              <circle cx="186" cy="177" r="5" stroke-width="1"/>
+ 
+              <!-- FOREARMS -->
+              <line x1="50" y1="181" x2="40" y2="238" stroke-width="1"/>
+              <line x1="190" y1="181" x2="200" y2="238" stroke-width="1"/>
+ 
+              <!-- WRISTS -->
+              <line x1="37" y1="238" x2="45" y2="242"/>
+              <line x1="197" y1="238" x2="205" y2="242"/>
+ 
+              <!-- HANDS (simplified) -->
+              <path d="M34 242 Q28 250 32 258 Q36 265 44 260 Q50 255 48 246" stroke-width="0.9"/>
+              <path d="M206 242 Q212 250 208 258 Q204 265 196 260 Q190 255 192 246" stroke-width="0.9"/>
+              <!-- Fingers left -->
+              <line x1="30" y1="255" x2="26" y2="267"/>
+              <line x1="35" y1="260" x2="32" y2="272"/>
+              <line x1="41" y1="262" x2="39" y2="274"/>
+              <line x1="46" y1="259" x2="45" y2="270"/>
+              <!-- Fingers right -->
+              <line x1="210" y1="255" x2="214" y2="267"/>
+              <line x1="205" y1="260" x2="208" y2="272"/>
+              <line x1="199" y1="262" x2="201" y2="274"/>
+              <line x1="194" y1="259" x2="195" y2="270"/>
+ 
+              <!-- PELVIS -->
+              <path d="M90 200 Q85 215 90 228 Q105 238 120 236 Q135 238 150 228 Q155 215 150 200" stroke-width="1.2"/>
+              <line x1="90" y1="200" x2="150" y2="200" stroke-width="1" stroke="rgba(224,32,26,0.5)"/>
+              <!-- Iliac crests -->
+              <path d="M90 200 Q80 195 78 205 Q80 215 90 212" stroke-width="0.9"/>
+              <path d="M150 200 Q160 195 162 205 Q160 215 150 212" stroke-width="0.9"/>
+ 
+              <!-- HIP JOINTS -->
+              <circle cx="95" cy="232" r="7" stroke-width="1.1"/>
+              <circle cx="145" cy="232" r="7" stroke-width="1.1"/>
+ 
+              <!-- THIGHS (femur) -->
+              <line x1="90" y1="238" x2="88" y2="322" stroke-width="1.3"/>
+              <line x1="150" y1="238" x2="152" y2="322" stroke-width="1.3"/>
+ 
+              <!-- KNEE CAPS -->
+              <circle cx="87" cy="325" r="8" stroke-width="1.1"/>
+              <circle cx="153" cy="325" r="8" stroke-width="1.1"/>
+ 
+              <!-- SHINS (tibia) -->
+              <line x1="84" y1="332" x2="82" y2="415" stroke-width="1.2"/>
+              <line x1="156" y1="332" x2="158" y2="415" stroke-width="1.2"/>
+ 
+              <!-- Fibula lines -->
+              <line x1="90" y1="335" x2="88" y2="412" stroke-width="0.6" stroke="rgba(224,32,26,0.4)"/>
+              <line x1="150" y1="335" x2="152" y2="412" stroke-width="0.6" stroke="rgba(224,32,26,0.4)"/>
+ 
+              <!-- ANKLES -->
+              <ellipse cx="83" cy="417" rx="8" ry="5" stroke-width="1"/>
+              <ellipse cx="157" cy="417" rx="8" ry="5" stroke-width="1"/>
+ 
+              <!-- FEET -->
+              <path d="M75 420 Q68 428 72 435 Q80 440 92 436 Q96 430 90 420" stroke-width="1"/>
+              <path d="M165 420 Q172 428 168 435 Q160 440 148 436 Q144 430 150 420" stroke-width="1"/>
+ 
+            </g>
+ 
+            <!-- GLOWING JOINT HIGHLIGHTS -->
+            <g fill="rgba(224,32,26,0.7)" stroke="none" filter="url(#skelGlow)">
+              <circle cx="120" cy="52" r="2"><animate attributeName="opacity" values="0.5;1;0.5" dur="3s" repeatCount="indefinite"/></circle>
+              <circle cx="72" cy="110" r="3"><animate attributeName="opacity" values="0.7;1;0.7" dur="2.4s" repeatCount="indefinite"/></circle>
+              <circle cx="168" cy="110" r="3"><animate attributeName="opacity" values="1;0.7;1" dur="2.4s" repeatCount="indefinite"/></circle>
+              <circle cx="54" cy="177" r="3"><animate attributeName="opacity" values="0.6;1;0.6" dur="2.8s" repeatCount="indefinite"/></circle>
+              <circle cx="186" cy="177" r="3"><animate attributeName="opacity" values="1;0.6;1" dur="2.8s" repeatCount="indefinite"/></circle>
+              <circle cx="95" cy="232" r="3.5"><animate attributeName="opacity" values="0.7;1;0.7" dur="2.2s" repeatCount="indefinite"/></circle>
+              <circle cx="145" cy="232" r="3.5"><animate attributeName="opacity" values="1;0.7;1" dur="2.2s" repeatCount="indefinite"/></circle>
+              <circle cx="87" cy="325" r="4"><animate attributeName="opacity" values="0.6;1;0.6" dur="3.2s" repeatCount="indefinite"/></circle>
+              <circle cx="153" cy="325" r="4"><animate attributeName="opacity" values="1;0.6;1" dur="3.2s" repeatCount="indefinite"/></circle>
+            </g>
+ 
+            <!-- SCAN LINE over skeleton -->
+            <rect x="0" y="0" width="240" height="4" fill="rgba(224,32,26,0.3)" opacity="0.6">
+              <animate attributeName="y" values="-4;484;-4" dur="2.8s" repeatCount="indefinite"/>
+            </rect>
+ 
+            <!-- HUD corner brackets -->
+            <g stroke="rgba(224,32,26,0.5)" stroke-width="1.2" fill="none">
+              <polyline points="0,0 0,16 16,16"/>
+              <polyline points="240,0 240,16 224,16"/>
+              <polyline points="0,480 0,464 16,464"/>
+              <polyline points="240,480 240,464 224,464"/>
+            </g>
+ 
+            <!-- Data readout labels -->
+            <g font-family="monospace" font-size="7" fill="rgba(224,32,26,0.5)" letter-spacing="0.06em">
+              <text x="4" y="10">SCAN</text>
+              <text x="195" y="10">ID:IS</text>
+              <text x="4" y="474">DEPT</text>
+              <text x="200" y="474">·CS·</text>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div><!-- /#char-bio-overlay -->
+ 
     <!-- Default hero view -->
     <div class="main-caption">
       <p>SHAPING THE NEXT GENERATION OF DEVELOPERS<br>THROUGH ENGAGEMENT, ADAPTABILITY &amp; PRACTICAL KNOWLEDGE</p>
       <small>BELGIUM CAMPUS IVERSITY · SOUTH AFRICA · ADV. DIPLOMA IN APPLICATION DEVELOPMENT</small>
     </div>
     <div class="hero-img-wrap">
-      <img
-        src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=1400&q=80&auto=format&fit=crop"
-        alt="Technology background"
-        onerror="this.src=''; this.parentElement.style.background='linear-gradient(135deg,#100205 0%,#280810 40%,#0d0207 100%)';"
-      />
+      <svg id="heroSvg" viewBox="0 0 900 420" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" style="width:100%;height:100%;display:block;">
+        <defs>
+          <radialGradient id="hBg" cx="45%" cy="55%" r="65%">
+            <stop offset="0%" stop-color="#3a0608"/>
+            <stop offset="40%" stop-color="#1a0305"/>
+            <stop offset="100%" stop-color="#060102"/>
+          </radialGradient>
+          <radialGradient id="hGlow1" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="rgba(224,32,26,0.28)"/>
+            <stop offset="100%" stop-color="rgba(224,32,26,0)"/>
+          </radialGradient>
+          <radialGradient id="hGlow2" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="rgba(140,8,6,0.2)"/>
+            <stop offset="100%" stop-color="rgba(140,8,6,0)"/>
+          </radialGradient>
+          <radialGradient id="hGlow3" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="rgba(200,20,18,0.15)"/>
+            <stop offset="100%" stop-color="rgba(200,20,18,0)"/>
+          </radialGradient>
+          <filter id="redBloom"><feGaussianBlur stdDeviation="3" result="blur"/><feComposite in="SourceGraphic" in2="blur" operator="over"/></filter>
+          <filter id="softBloom"><feGaussianBlur stdDeviation="6" result="blur"/><feComposite in="SourceGraphic" in2="blur" operator="over"/></filter>
+          <filter id="hardBloom"><feGaussianBlur stdDeviation="10" result="blur"/><feComposite in="SourceGraphic" in2="blur" operator="over"/></filter>
+          <radialGradient id="vig" cx="50%" cy="50%" r="70%">
+            <stop offset="35%" stop-color="rgba(0,0,0,0)"/>
+            <stop offset="100%" stop-color="rgba(6,1,2,0.82)"/>
+          </radialGradient>
+        </defs>
+        <rect width="900" height="420" fill="url(#hBg)"/>
+        <ellipse cx="450" cy="380" rx="420" ry="160" fill="url(#hGlow1)" opacity="0.8"/>
+        <ellipse cx="200" cy="200" rx="200" ry="180" fill="url(#hGlow2)" opacity="0.6"/>
+        <ellipse cx="700" cy="160" rx="180" ry="150" fill="url(#hGlow3)" opacity="0.5"/>
+        <ellipse cx="450" cy="210" rx="160" ry="120" fill="url(#hGlow2)" opacity="0.35"/>
+        <!-- Perspective grid -->
+        <g stroke="rgba(224,32,26,0.13)" stroke-width="0.7" fill="none">
+          <line x1="0" y1="420" x2="450" y2="265"/><line x1="100" y1="420" x2="450" y2="265"/>
+          <line x1="200" y1="420" x2="450" y2="265"/><line x1="300" y1="420" x2="450" y2="265"/>
+          <line x1="400" y1="420" x2="450" y2="265"/><line x1="500" y1="420" x2="450" y2="265"/>
+          <line x1="600" y1="420" x2="450" y2="265"/><line x1="700" y1="420" x2="450" y2="265"/>
+          <line x1="800" y1="420" x2="450" y2="265"/><line x1="900" y1="420" x2="450" y2="265"/>
+          <line x1="0" y1="310" x2="900" y2="310" stroke="rgba(224,32,26,0.07)"/>
+          <line x1="0" y1="350" x2="900" y2="350" stroke="rgba(224,32,26,0.06)"/>
+          <line x1="0" y1="385" x2="900" y2="385" stroke="rgba(224,32,26,0.05)"/>
+        </g>
+        <!-- Circuit traces left -->
+        <g stroke="rgba(224,32,26,0.28)" stroke-width="0.9" fill="none">
+          <polyline points="0,120 50,120 70,100 130,100 150,80 210,80"/>
+          <polyline points="0,165 30,165 50,145 90,145 110,125 170,125"/>
+          <polyline points="130,420 130,385 150,365 200,365 220,345 270,345"/>
+        </g>
+        <!-- Circuit traces right -->
+        <g stroke="rgba(224,32,26,0.28)" stroke-width="0.9" fill="none">
+          <polyline points="900,110 850,110 830,90 770,90 750,70"/>
+          <polyline points="900,155 870,155 850,135 810,135 790,115 730,115"/>
+          <polyline points="770,420 770,385 750,365 700,365 680,345 630,345"/>
+        </g>
+        <!-- Glowing nodes -->
+        <g fill="rgba(224,32,26,0.7)" filter="url(#redBloom)">
+          <circle cx="210" cy="80" r="3"/><circle cx="750" cy="70" r="3"/>
+          <circle cx="270" cy="345" r="2.5"/><circle cx="630" cy="345" r="2.5"/>
+        </g>
+        <circle cx="150" cy="80" r="3.5" fill="rgba(224,32,26,0.9)" filter="url(#redBloom)">
+          <animate attributeName="opacity" values="1;0.1;1" dur="1.9s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="790" cy="115" r="3.5" fill="rgba(224,32,26,0.9)" filter="url(#redBloom)">
+          <animate attributeName="opacity" values="0.1;1;0.1" dur="2.4s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="680" cy="345" r="4" fill="rgba(224,32,26,0.8)" filter="url(#redBloom)">
+          <animate attributeName="opacity" values="0.2;1;0.2" dur="2.8s" repeatCount="indefinite"/>
+        </circle>
+        <!-- Central rings -->
+        <circle cx="450" cy="210" r="130" stroke="rgba(224,32,26,0.08)" stroke-width="0.8" fill="none" stroke-dasharray="4 8">
+          <animateTransform attributeName="transform" type="rotate" from="0 450 210" to="360 450 210" dur="45s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="450" cy="210" r="115" stroke="rgba(224,32,26,0.14)" stroke-width="1" fill="none"/>
+        <circle cx="450" cy="210" r="88" stroke="rgba(224,32,26,0.22)" stroke-width="1.1" fill="none" stroke-dasharray="3 7">
+          <animateTransform attributeName="transform" type="rotate" from="0 450 210" to="360 450 210" dur="18s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="450" cy="210" r="62" stroke="rgba(224,32,26,0.4)" stroke-width="1.4" fill="rgba(224,32,26,0.03)" filter="url(#redBloom)">
+          <animate attributeName="stroke-opacity" values="0.4;0.9;0.4" dur="2.6s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="450" cy="210" r="36" stroke="rgba(224,32,26,0.6)" stroke-width="1.8" fill="rgba(28,4,4,0.8)" filter="url(#softBloom)">
+          <animate attributeName="stroke-opacity" values="0.6;1;0.6" dur="1.8s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="450" cy="210" r="12" fill="rgba(224,32,26,0.8)" filter="url(#hardBloom)">
+          <animate attributeName="r" values="10;16;10" dur="1.8s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="0.7;1;0.7" dur="1.8s" repeatCount="indefinite"/>
+        </circle>
+        <!-- Crosshairs -->
+        <line x1="320" y1="210" x2="412" y2="210" stroke="rgba(224,32,26,0.3)" stroke-width="1"/>
+        <line x1="488" y1="210" x2="580" y2="210" stroke="rgba(224,32,26,0.3)" stroke-width="1"/>
+        <line x1="450" y1="80" x2="450" y2="172" stroke="rgba(224,32,26,0.3)" stroke-width="1"/>
+        <line x1="450" y1="248" x2="450" y2="340" stroke="rgba(224,32,26,0.3)" stroke-width="1"/>
+        <!-- Tick marks -->
+        <g stroke="rgba(224,32,26,0.4)" stroke-width="1.2" fill="none">
+          <line x1="450" y1="95" x2="450" y2="110"/><line x1="450" y1="310" x2="450" y2="325"/>
+          <line x1="335" y1="210" x2="350" y2="210"/><line x1="550" y1="210" x2="565" y2="210"/>
+        </g>
+        <!-- Hex texture -->
+        <g stroke="rgba(224,32,26,0.09)" stroke-width="0.7" fill="none">
+          <polygon points="55,42 75,30 95,42 95,66 75,78 55,66"/>
+          <polygon points="95,42 115,30 135,42 135,66 115,78 95,66"/>
+          <polygon points="755,35 775,23 795,35 795,59 775,71 755,59"/>
+          <polygon points="795,35 815,23 835,35 835,59 815,71 795,59"/>
+          <polygon points="55,330 75,318 95,330 95,354 75,366 55,354"/>
+          <polygon points="805,325 825,313 845,325 845,349 825,361 805,349"/>
+        </g>
+        <!-- Data readouts -->
+        <g font-family="monospace" font-size="7.5" fill="rgba(224,32,26,0.6)" letter-spacing="0.09em">
+          <text x="22" y="186">SYSTEM STATUS</text>
+          <text x="22" y="198" fill="rgba(224,32,26,0.95)">■ ONLINE</text>
+          <text x="22" y="212">LOAD: 07%</text>
+          <text x="22" y="224">MEM: 4.2 GB</text>
+          <text x="22" y="238">NET: STABLE</text>
+          <text x="22" y="252">DEPT: CS/IT</text>
+          <rect x="18" y="178" width="88" height="80" stroke="rgba(224,32,26,0.25)" stroke-width="0.8" fill="rgba(224,32,26,0.03)"/>
+        </g>
+        <g font-family="monospace" font-size="7.5" fill="rgba(224,32,26,0.6)" letter-spacing="0.09em">
+          <text x="780" y="186">PROFILE LOCK</text>
+          <text x="780" y="198" fill="rgba(224,32,26,0.95)">■ IKRAAM.S</text>
+          <text x="780" y="212">LVL: 07</text>
+          <text x="780" y="224">DEPT: CS</text>
+          <text x="780" y="238">AUTH: PASS</text>
+          <text x="780" y="252">MODULES:11</text>
+          <rect x="776" y="178" width="100" height="80" stroke="rgba(224,32,26,0.25)" stroke-width="0.8" fill="rgba(224,32,26,0.03)"/>
+        </g>
+        <!-- Floating data particles -->
+        <g fill="rgba(224,32,26,0.55)" font-family="monospace" font-size="8">
+          <text x="40" y="85"><animate attributeName="y" values="85;65;85" dur="5.2s" repeatCount="indefinite"/>0x4E4F</text>
+          <text x="820" y="95"><animate attributeName="y" values="95;75;95" dur="4.5s" repeatCount="indefinite"/>0xF3A1</text>
+          <text x="160" y="350"><animate attributeName="y" values="350;330;350" dur="7s" repeatCount="indefinite"/>IKRAAM.S</text>
+          <text x="670" y="345"><animate attributeName="y" values="345;325;345" dur="6.5s" repeatCount="indefinite"/>LVL:07</text>
+          <text x="340" y="55"><animate attributeName="y" values="55;35;55" dur="4.9s" repeatCount="indefinite"/>01001</text>
+          <text x="520" y="70"><animate attributeName="y" values="70;50;70" dur="5.4s" repeatCount="indefinite"/>11010</text>
+        </g>
+        <!-- Name watermark -->
+        <text x="450" y="248" text-anchor="middle" font-family="monospace" font-size="11"
+              fill="rgba(224,32,26,0.22)" letter-spacing="0.35em">IKRAAM SADEK</text>
+        <text x="450" y="262" text-anchor="middle" font-family="monospace" font-size="7"
+              fill="rgba(224,32,26,0.15)" letter-spacing="0.25em">JUNIOR LECTURER · BELGIUM CAMPUS</text>
+        <!-- Vertical scan line -->
+        <line x1="-2" y1="0" x2="-2" y2="420" stroke="rgba(224,32,26,0.45)" stroke-width="2" filter="url(#redBloom)">
+          <animate attributeName="x1" values="-10;910;-10" dur="4.5s" repeatCount="indefinite"/>
+          <animate attributeName="x2" values="-10;910;-10" dur="4.5s" repeatCount="indefinite"/>
+        </line>
+        <!-- Horizontal scan line -->
+        <line x1="0" y1="-2" x2="900" y2="-2" stroke="rgba(224,32,26,0.22)" stroke-width="1.2">
+          <animate attributeName="y1" values="-5;425;-5" dur="6.5s" repeatCount="indefinite" begin="0.8s"/>
+          <animate attributeName="y2" values="-5;425;-5" dur="6.5s" repeatCount="indefinite" begin="0.8s"/>
+        </line>
+        <!-- Floor glow -->
+        <ellipse cx="450" cy="418" rx="350" ry="14" fill="rgba(224,32,26,0.15)" filter="url(#softBloom)"/>
+        <!-- Vignette -->
+        <rect width="900" height="420" fill="url(#vig)"/>
+      </svg>
     </div>
  
   </main>
