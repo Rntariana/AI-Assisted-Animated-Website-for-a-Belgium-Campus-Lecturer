@@ -51,9 +51,9 @@ body::before {
   position: fixed; inset: 0; z-index: 10000;
   background: #080304;
   display: flex; align-items: center; justify-content: center;
-  transition: opacity 0.8s ease, visibility 0.8s ease;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
 }
-#splash.hidden { opacity: 0; visibility: hidden; }
+#splash.hidden { opacity: 0; visibility: hidden; transition: opacity 0.5s ease, visibility 0.5s ease; }
 
 .splash-inner {
   display: flex; align-items: center; gap: 80px;
@@ -140,9 +140,172 @@ body::before {
     "topbar topbar topbar"
     "left   main   right"
     "left   tabs   right";
-  opacity: 0; transition: opacity 0.6s ease;
+  /* Always rendered in the DOM but panels start off-screen via animation */
+  opacity: 1;
+  pointer-events: none;
 }
-.hud.visible { opacity: 1; }
+.hud.visible {
+  pointer-events: all;
+}
+
+/* ── TOP BAR: hidden off the top by default ── */
+.hud .topbar {
+  transform: translateY(-110%);
+  opacity: 0;
+}
+/* ── LEFT PANEL: hidden off the left ── */
+.hud .left-panel {
+  transform: translateX(-110%);
+  opacity: 0;
+}
+/* ── RIGHT PANEL: hidden off the right ── */
+.hud .right-panel {
+  transform: translateX(110%);
+  opacity: 0;
+}
+/* ── MAIN PANEL: hidden, slightly scaled down ── */
+.hud .main-panel {
+  opacity: 0;
+  transform: scale(0.96);
+}
+/* ── TABS BAR: hidden off the bottom ── */
+.hud .tabs-panel {
+  transform: translateY(110%);
+  opacity: 0;
+}
+
+/* ── Trigger all animations when .hud-entering is set ── */
+/* Each panel uses animation-delay to create the stagger */
+.hud.hud-entering .topbar {
+  animation: slideDownIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0ms    forwards;
+}
+.hud.hud-entering .left-panel {
+  animation: slideRightIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) 150ms  forwards;
+}
+.hud.hud-entering .right-panel {
+  animation: slideLeftIn  0.6s cubic-bezier(0.22, 1, 0.36, 1) 260ms  forwards;
+}
+.hud.hud-entering .main-panel {
+  animation: scaleIn      0.65s cubic-bezier(0.22, 1, 0.36, 1) 380ms forwards;
+}
+.hud.hud-entering .tabs-panel {
+  animation: slideUpIn    0.6s cubic-bezier(0.22, 1, 0.36, 1) 500ms  forwards;
+}
+
+/* ── Keyframes ── */
+@keyframes slideDownIn {
+  from { transform: translateY(-110%); opacity: 0; }
+  to   { transform: translateY(0);     opacity: 1; }
+}
+@keyframes slideRightIn {
+  from { transform: translateX(-110%); opacity: 0; }
+  to   { transform: translateX(0);     opacity: 1; }
+}
+@keyframes slideLeftIn {
+  from { transform: translateX(110%);  opacity: 0; }
+  to   { transform: translateX(0);     opacity: 1; }
+}
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.94); }
+  to   { opacity: 1; transform: scale(1);    }
+}
+@keyframes slideUpIn {
+  from { transform: translateY(110%); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+
+/* ── Once fully settled, lock everything in place ── */
+/* No overrides needed — animation fill-mode:forwards holds the final state.
+   .visible is only used for pointer-events and scroll-reveal trigger. */
+
+/* ══════════════════════════════════════
+   HERO SVG BOOT SEQUENCE
+   Fires after main panel fades in (~380ms + 650ms = ~1030ms total)
+══════════════════════════════════════ */
+
+/* The SVG wrapper starts invisible */
+#heroSvg {
+  opacity: 0;
+}
+
+/* When .hud-entering is active, the SVG fades in after the main panel */
+.hud.hud-entering #heroSvg {
+  animation: heroFadeIn 1.1s ease 1080ms forwards;
+}
+
+@keyframes heroFadeIn {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* ── Individual SVG layers boot in sequence ── */
+
+/* Background rect + glows — first to appear */
+.hud.hud-entering #heroSvg .hero-bg {
+  animation: layerFadeIn 0.5s ease 1080ms forwards;
+  opacity: 0;
+}
+
+/* Grid lines sweep in */
+.hud.hud-entering #heroSvg .hero-grid {
+  animation: layerFadeIn 0.6s ease 1200ms forwards;
+  opacity: 0;
+}
+
+/* Circuit traces draw in */
+.hud.hud-entering #heroSvg .hero-circuits {
+  animation: layerFadeIn 0.5s ease 1350ms forwards;
+  opacity: 0;
+}
+
+/* Data readout boxes */
+.hud.hud-entering #heroSvg .hero-readouts {
+  animation: layerFadeIn 0.5s ease 1500ms forwards;
+  opacity: 0;
+}
+
+/* Outer rings pulse in */
+.hud.hud-entering #heroSvg .hero-rings-outer {
+  animation: layerScaleIn 0.7s cubic-bezier(0.22, 1, 0.36, 1) 1580ms forwards;
+  opacity: 0;
+  transform-origin: 450px 210px;
+}
+
+/* Inner rings + core pulse in last */
+.hud.hud-entering #heroSvg .hero-rings-inner {
+  animation: layerScaleIn 0.65s cubic-bezier(0.22, 1, 0.36, 1) 1780ms forwards;
+  opacity: 0;
+  transform-origin: 450px 210px;
+}
+
+/* Crosshairs extend in */
+.hud.hud-entering #heroSvg .hero-crosshairs {
+  animation: layerFadeIn 0.4s ease 1950ms forwards;
+  opacity: 0;
+}
+
+/* Floating particles + watermark last */
+.hud.hud-entering #heroSvg .hero-particles {
+  animation: layerFadeIn 0.6s ease 2100ms forwards;
+  opacity: 0;
+}
+
+@keyframes layerFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes layerScaleIn {
+  from { opacity: 0; transform: scale(0.6); }
+  to   { opacity: 1; transform: scale(1);   }
+}
+
+/* Caption text below SVG boots in too */
+.hud .main-caption {
+  opacity: 0;
+}
+.hud.hud-entering .main-caption {
+  animation: layerFadeIn 0.7s ease 2200ms forwards;
+}
 
 /* ══════════════════════════════════════
    TOP BAR
@@ -332,17 +495,24 @@ body::before {
   background: rgba(13,6,8,0.97);
   display: none; flex-direction: column;
   padding: 20px; overflow-y: auto;
-  /* Tab slide-in animation */
-  transform: translateY(12px);
-  opacity: 0;
 }
 .content-overlay.visible {
   display: flex;
-  animation: overlayIn 0.32s cubic-bezier(0.16,1,0.3,1) forwards;
+  animation: overlaySlideIn 0.38s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
-@keyframes overlayIn {
-  from { opacity: 0; transform: translateY(14px); }
-  to   { opacity: 1; transform: translateY(0); }
+/* Slide in from bottom */
+@keyframes overlaySlideIn {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+/* Slide out to bottom */
+.content-overlay.sliding-out {
+  display: flex !important;
+  animation: overlaySlideOut 0.24s ease-in forwards !important;
+}
+@keyframes overlaySlideOut {
+  from { opacity: 1; transform: translateY(0);    }
+  to   { opacity: 0; transform: translateY(14px); }
 }
 
 .overlay-header {
@@ -775,15 +945,18 @@ body::before {
   position: absolute; inset: 0; z-index: 20;
   background: rgba(8,1,3,0.97);
   display: none; flex-direction: column;
-  opacity: 0; transition: opacity 0s;
 }
 #char-bio-overlay.visible {
   display: flex;
-  animation: bioOverlayIn 0.45s cubic-bezier(0.16,1,0.3,1) forwards;
+  animation: bioOverlayIn 0.45s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 @keyframes bioOverlayIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+#char-bio-overlay.sliding-out {
+  display: flex !important;
+  animation: overlaySlideOut 0.26s ease-in forwards !important;
 }
 
 .bio-topbar {
@@ -867,36 +1040,19 @@ body::before {
 }
 .bio-skeleton-svg {
   width: 100%; height: 100%; max-height: 420px;
-  transform-origin: center bottom;
-  animation:
-    skeletonAppear 0.7s cubic-bezier(0.16,1,0.3,1) forwards,
-    skeletonFloat  4s   ease-in-out 0.7s infinite,
-    skeletonPulse  3s   ease-in-out 0.7s infinite;
+  animation: skeletonAppear 0.7s cubic-bezier(0.16,1,0.3,1) forwards;
+  opacity: 0;
 }
 @keyframes skeletonAppear {
   from { opacity: 0; transform: scale(0.92) translateY(10px); }
   to   { opacity: 1; transform: scale(1) translateY(0); }
 }
-@keyframes skeletonFloat {
-  0%, 100% { transform: translateY(0px); }
-  50%       { transform: translateY(-12px); }
-}
-@keyframes skeletonSway {
-  0%, 100% { transform: rotate(-1.5deg); }
-  50%       { transform: translateY(-12px) rotate(1.5deg); }
-}
+/* Pulsing glow on skeleton */
 @keyframes skeletonPulse {
   0%, 100% { filter: drop-shadow(0 0 6px rgba(224,32,26,0.4)); }
   50%       { filter: drop-shadow(0 0 18px rgba(224,32,26,0.8)); }
 }
-@keyframes skeletonShadow {
-  0%, 100% { transform: scaleX(1); opacity: 0.15; }
-  50%       { transform: scaleX(0.65); opacity: 0.07; }
-}
-.skeleton-glow {
-  transform-origin: center bottom;
-  animation: skeletonSway 6s ease-in-out infinite;
-}
+.skeleton-glow { animation: skeletonPulse 3s ease-in-out infinite; }
 
 /* Scan line over skeleton */
 .skeleton-scan {
@@ -933,4 +1089,192 @@ body::before {
 @media (max-width: 480px) {
   .bio-body { grid-template-columns: 1fr; }
   .bio-skeleton-col { display: none; }
+}
+
+/* ══════════════════════════════════════
+   MOBILE SCROLL REVEAL
+══════════════════════════════════════ */
+
+/* Elements that will animate in on scroll (mobile only) */
+.scroll-hidden {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.scroll-visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* Stagger children within a revealed parent on mobile */
+@media (max-width: 960px) {
+  /* Left panel pieces slide in one by one */
+  .left-panel .char-frame     { transition-delay: 0ms;   }
+  .left-panel .info-block     { transition-delay: 80ms;  }
+  .left-panel .tag-btn        { transition-delay: 130ms; }
+  .left-panel .motto          { transition-delay: 180ms; }
+
+  /* Right panel slides in */
+  .right-panel .quest-header  { transition-delay: 0ms;   }
+  .right-panel .quest-body    { transition-delay: 60ms;  }
+  .right-panel .right-settings{ transition-delay: 120ms; }
+
+  /* Tabs stagger */
+  .tab-item:nth-child(1) { transition-delay: 0ms;   }
+  .tab-item:nth-child(2) { transition-delay: 70ms;  }
+  .tab-item:nth-child(3) { transition-delay: 140ms; }
+  .tab-item:nth-child(4) { transition-delay: 210ms; }
+  .tab-item:nth-child(5) { transition-delay: 280ms; }
+
+  /* Mobile: main panel hero reveals nicely */
+  .main-panel .main-caption {
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.5s ease 0.3s, transform 0.5s ease 0.3s;
+  }
+  .hud.visible .main-panel .main-caption {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ══════════════════════════════════════
+   HERO SVG — BOOT SEQUENCE ANIMATION
+   Triggered when .hud-entering is set.
+   Each layer fades in staggered so the
+   scene builds up like a system boot.
+══════════════════════════════════════ */
+
+/* Base keyframe — used by all layers */
+@keyframes bootFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes bootScaleIn {
+  from { opacity: 0; transform: scale(0.82); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes bootGrowIn {
+  from { opacity: 0; transform: scale(0.4); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes bootCaptionIn {
+  from { opacity: 0; transform: translateY(8px) scale(0.98); letter-spacing: 0.35em; }
+  to   { opacity: 1; transform: translateY(0)  scale(1);    letter-spacing: 0.22em; }
+}
+
+/* All layers start invisible */
+.hud-entering #hero-bg,
+.hud-entering #hero-grid,
+.hud-entering #hero-circuits,
+.hud-entering #hero-hex,
+.hud-entering #hero-ring-outer,
+.hud-entering #hero-ring-mid,
+.hud-entering #hero-ring-inner,
+.hud-entering #hero-crosshairs,
+.hud-entering #hero-data,
+.hud-entering #hero-particles,
+.hud-entering #hero-ring-core,
+.hud-entering #hero-scanline,
+.hud-entering .main-caption {
+  opacity: 0;
+}
+
+/* Layer 1 — background gradient: immediate */
+.hud-entering #hero-bg {
+  animation: bootFadeIn 0.6s ease forwards;
+  animation-delay: 0.05s;
+}
+
+/* Layer 2 — perspective grid */
+.hud-entering #hero-grid {
+  animation: bootFadeIn 0.7s ease forwards;
+  animation-delay: 0.25s;
+}
+
+/* Layer 3 — circuit traces + hex cells */
+.hud-entering #hero-circuits {
+  animation: bootFadeIn 0.6s ease forwards;
+  animation-delay: 0.45s;
+}
+.hud-entering #hero-hex {
+  animation: bootFadeIn 0.5s ease forwards;
+  animation-delay: 0.55s;
+}
+
+/* Layer 4 — outermost ring expands from centre */
+.hud-entering #hero-ring-outer {
+  transform-origin: 450px 210px;
+  animation: bootGrowIn 0.7s cubic-bezier(0.22,1,0.36,1) forwards;
+  animation-delay: 0.65s;
+}
+
+/* Layer 5 — mid ring */
+.hud-entering #hero-ring-mid {
+  transform-origin: 450px 210px;
+  animation: bootGrowIn 0.65s cubic-bezier(0.22,1,0.36,1) forwards;
+  animation-delay: 0.85s;
+}
+
+/* Layer 6 — inner bright ring */
+.hud-entering #hero-ring-inner {
+  transform-origin: 450px 210px;
+  animation: bootGrowIn 0.6s cubic-bezier(0.22,1,0.36,1) forwards;
+  animation-delay: 1.0s;
+}
+
+/* Layer 7 — crosshairs draw in */
+.hud-entering #hero-crosshairs {
+  animation: bootFadeIn 0.5s ease forwards;
+  animation-delay: 1.15s;
+}
+
+/* Layer 8 — data readout panels */
+.hud-entering #hero-data {
+  animation: bootFadeIn 0.6s ease forwards;
+  animation-delay: 1.3s;
+}
+
+/* Layer 9 — floating particles */
+.hud-entering #hero-particles {
+  animation: bootFadeIn 0.5s ease forwards;
+  animation-delay: 1.45s;
+}
+
+/* Layer 10 — core pulse dot: dramatic scale-up from nothing */
+.hud-entering #hero-ring-core {
+  transform-origin: 450px 210px;
+  animation: bootScaleIn 0.5s cubic-bezier(0.34,1.56,0.64,1) forwards;
+  animation-delay: 1.55s;
+}
+
+/* Layer 11 — scan lines: last thing to appear */
+.hud-entering #hero-scanline {
+  animation: bootFadeIn 0.4s ease forwards;
+  animation-delay: 1.75s;
+}
+
+/* Caption text: fades in with slight expand */
+.hud-entering .main-caption {
+  animation: bootCaptionIn 0.7s cubic-bezier(0.22,1,0.36,1) forwards;
+  animation-delay: 1.6s;
+}
+
+/* Once visible class is set, keep everything shown (fill-mode forwards handles it,
+   but be explicit so nothing flickers if the class is re-applied) */
+.hud.visible #hero-bg,
+.hud.visible #hero-grid,
+.hud.visible #hero-circuits,
+.hud.visible #hero-hex,
+.hud.visible #hero-ring-outer,
+.hud.visible #hero-ring-mid,
+.hud.visible #hero-ring-inner,
+.hud.visible #hero-crosshairs,
+.hud.visible #hero-data,
+.hud.visible #hero-particles,
+.hud.visible #hero-ring-core,
+.hud.visible #hero-scanline,
+.hud.visible .main-caption {
+  opacity: 1;
 }
