@@ -12,17 +12,34 @@
      SPLASH SCREEN
 ══════════════════════════════════════ -->
 <div id="splash">
-  <div class="splash-inner">
-    <div class="splash-hi">HI!</div>
-    <div class="splash-content">
-      <div class="splash-welcome">Welcome to my personal portfolio.</div>
-      <div class="splash-desc">
-        I have created this website to feel like a game / sci-fi interface.<br>
-        You will find modules I teach, achievements, projects<br>
-        and more that reflect my professional journey.
-      </div>
-      <button class="splash-btn" id="enterBtn">ENTER THE SYSTEM</button>
+  <!-- Ambient corner glow elements -->
+  <div class="splash-corner-tl"></div>
+  <div class="splash-corner-br"></div>
+ 
+  <!-- Scan line sweep -->
+  <div class="splash-scanline"></div>
+ 
+  <!-- Name — centrepiece -->
+  <div class="splash-name-wrap">
+    <div class="splash-pre-label">PORTFOLIO OF</div>
+    <div class="splash-name" id="splashName">
+      <!-- Each letter is a span, JS will inject them -->
     </div>
+    <div class="splash-post-label">JUNIOR LECTURER · BELGIUM CAMPUS</div>
+  </div>
+ 
+  <!-- Bottom content -->
+  <div class="splash-bottom">
+    <div class="splash-divider">
+      <span class="splash-divider-line"></span>
+      <span class="splash-divider-icon">◈</span>
+      <span class="splash-divider-line"></span>
+    </div>
+    <div class="splash-desc">
+      A game-ui inspired portfolio reflecting the professional journey,<br>
+      modules, achievements and projects of an educator.
+    </div>
+    <button class="splash-btn" id="enterBtn">[ ENTER THE SYSTEM ]</button>
   </div>
 </div>
  
@@ -1127,6 +1144,7 @@
   </nav>
  
 </div><!-- /.hud -->
+
 
  
 <script src="script.js"></script>

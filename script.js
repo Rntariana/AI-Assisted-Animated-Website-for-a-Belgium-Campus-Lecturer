@@ -6,6 +6,47 @@
 const isMobile = () => window.innerWidth <= 960;
 
 /* ══════════════════════════════════════
+   SPLASH NAME ANIMATION
+   Splits "IKRAAM SADEK" into individual
+   letter spans, then drops each in with
+   a staggered bounce, followed by glow.
+══════════════════════════════════════ */
+(function initSplashName() {
+  const nameEl   = document.getElementById('splashName');
+  const fullName = 'IKRAAM SADEK';
+  const baseDelay = 0.18; // seconds before first letter drops
+  const step      = 0.07; // seconds between each letter
+
+  // Build letter spans
+  fullName.split('').forEach((char, i) => {
+    const span = document.createElement('span');
+
+    if (char === ' ') {
+      span.className    = 'splash-letter space';
+      span.style.opacity = '1';
+      span.style.transform = 'none';
+    } else {
+      span.className   = 'splash-letter';
+      span.textContent = char;
+
+      const delay = baseDelay + i * step;
+
+      // Trigger the drop animation
+      span.style.animation = `letterDrop 0.65s cubic-bezier(0.22,1,0.36,1) ${delay}s forwards`;
+
+      // After the drop lands, switch to the continuous glow
+      const glowDelay = (delay + 0.65) * 1000;
+      setTimeout(() => {
+        span.classList.add('landed');
+        span.style.animation = ''; // clear drop, CSS class handles glow
+      }, glowDelay);
+    }
+
+    nameEl.appendChild(span);
+  });
+})();
+
+/* ══════════════════════════════════════
    SPLASH → HUD ENTRY SEQUENCE
 ══════════════════════════════════════ */
 document.getElementById('enterBtn').addEventListener('click', function () {
